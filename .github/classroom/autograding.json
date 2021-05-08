@@ -1,0 +1,84 @@
+{
+  "tests": [
+    {
+      "name": "test successfully builds",
+      "setup": "./configure",
+      "run": "make",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 40
+    },
+    {
+      "name": "test ListTests",
+      "setup": "make",
+      "run": "./test --list-test-names-only [ListTests] | grep . && ./test [ListTests]",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 0
+    },
+    {
+      "name": "test task1append",
+      "setup": "make",
+      "run": "./test --list-test-names-only [task1append] | grep . && ./test [task1append]",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "test task1overloadedOperator",
+      "setup": "make",
+      "run": "./test --list-test-names-only [task1overloadedOperator] | grep . && ./test [task1overloadedOperator]",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "test task2prepend",
+      "setup": "make",
+      "run": "./test --list-test-names-only [task2prepend] | grep . && ./test [task2prepend]",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "test task2overloadedOperator",
+      "setup": "make",
+      "run": "./test --list-test-names-only [task2overloadedOperator] | grep . && ./test [task2overloadedOperator]",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "test task3concatenate",
+      "setup": "make",
+      "run": "./test --list-test-names-only [task3concatenate] | grep . && ./test [task3concatenate]",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    },
+    {
+      "name": "test task3overloadedOperator",
+      "setup": "make",
+      "run": "./test --list-test-names-only [task3overloadedOperator] | grep . && ./test [task3overloadedOperator]",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 5
+    }
+  ]
+}
