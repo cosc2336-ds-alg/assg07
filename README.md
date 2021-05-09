@@ -1,5 +1,5 @@
 ---
-title: 'Assignment Operator Overloading and Class Templates: Overloading C++ syntatic operators and class templates for user defined data types'
+title: 'Assignment Operator Overloading and Class Templates: Overloading C++ syntactic operators and class templates for user defined data types'
 author: 'COSC 2336: Data Structures and Algorithms'
 date: 'Summer 2021'
 ---
@@ -13,7 +13,7 @@ date: 'Summer 2021'
 - Practice writing member functions of C++ classes.
 - Introduction to operator overloading, and extending the
   idea of a user defined type as a new type by adding basic
-  support in the language for syntatic operators on the
+  support in the language for syntactic operators on the
   new type.
 - More practice with dynamic memory management in order to
   support list types that can grow and shrink dynamically.
@@ -26,7 +26,7 @@ date: 'Summer 2021'
 We have two related but separate goals in this assignment.  First of
 all in this assignment we will be emphasizing the idea that defining a
 class is like adding a new user defined data type to the C++ language.
-One way this can be increadibly powerful is when we define operator so
+One way this can be incredibly powerful is when we define operator so
 that user defined classes can be used in similar ways as built in data
 types.  This gives ways of much more naturally and expressively being
 able to work with classes you define to use in your code, as hopefully
@@ -85,9 +85,9 @@ you have completed the following setup steps.
 1. Copy the assignment repository on GitHub using the provided
    assignment invitation link for 'Assignment Recursion' for our
    current class semester and section.
-2. Clone the repository using the SSH url to your local class DevBox
+2. Clone the repository using the SSH URL to your local class DevBox
    development environment.
-3. Checkout the 'origins/feedback' branch to your locak working DevBox
+3. Checkout the 'origins/feedback' branch to your local working DevBox
    repository.
 4. Configure the project by running the `configure` script from a terminal.
 5. Confirm that the project builds and runs, though no tests will be
@@ -97,14 +97,14 @@ you have completed the following setup steps.
    now before beginning the first task.  On your GitHub account, go to issues,
    and create it/them from the issue templates for the assignment.  Also you
    should close the initial Pull request that should be automatically
-   opened for you, so that you can open your own when commiting your work.
+   opened for you, so that you can open your own when committing your work.
 
 
 # Assignment Tasks
 
 Notice before beginning the assignment that there are 3 overloaded operators
 already defined for the `List`: `operator[]()`, `operator==()` and
-`operator<<()`.  You used these in previous assignments, expecially the
+`operator<<()`.  You used these in previous assignments, especially the
 indexing `operator[]`, though we mostly took them for granted as working
 at the time.  Notice how they work.  For example, the `operator==()`
 allows us to test two `List` items to see if they contain all of the
@@ -123,10 +123,10 @@ exact same values:
 This should return `false` because while the lists are both of the
 same size, and most values are equal, the last value of the two lists
 differ.  But the point is that, given the overloaded boolean
-comparision operator for our `List` class, we can perform boolean
-comparisions that yield `true` / `false` results just like the
+comparison operator for our `List` class, we can perform boolean
+comparisons that yield `true` / `false` results just like the
 built in data types like `int` or `float`.  If you wanted, you could
-add in other boolean comparision operators for the `List` class, like
+add in other boolean comparison operators for the `List` class, like
 `<`, `>=`, etc.  Question: how would you define `<` for our `List`
 class?  We will not be adding in more boolean operators in this assignment,
 but doing something different.
@@ -186,7 +186,7 @@ for the methods you will implement where you need to add in
 a value and the list is currently full.
 
 We double the new allocation of memory by default in this class.
-This is a common tradeoff between performance and memory size/usage.
+This is a common trade off between performance and memory size/usage.
 It is a very expensive operation to have to grow the list size,
 we have to allocate the new memory, and copy all of the values from
 the old allocation to the new allocation.  This is a $\mathcal{O}(n)$
@@ -250,7 +250,7 @@ values to the list.  The `>>` operator normally performs input
 stream operations in C/C++.  There is no real operator that means
 something like 'append' for the built in basic data types.  It is 
 not uncommon when doing operator overloading to do something like this,
-to repurpose an existing syntatic operation to mean something useful
+to re-purpose an existing syntactic operation to mean something useful
 for your own user defined data type.  Overloading this operator
 to mean appending a value allows us to write code like the
 following:
@@ -274,7 +274,7 @@ This will first append 5 to `l1` and it returns `l1` back as its result.  Then
 `l1 >> 3` would be performed which appends 3 to the end now, and so on.
 
 Your `operator>>()` will have the same signature as the `append()`
-funciton you just completed.  And in fact, this method is
+function you just completed.  And in fact, this method is
 trivial, as you should simply reuse and call the `append()`
 implementation you already have to implement this overloaded operator.
 
@@ -292,7 +292,7 @@ though dynamically allocated, array as the actual storage of the
 data values being managed by the `List`.  If your append operation
 is working correctly, it most of the time only takes $\mathcal{O}(1)$
 time to append a new item onto the end of the list, though at times
-when the list needs to grow you ned $\mathcal{O}(n)$ time to allocate
+when the list needs to grow you need $\mathcal{O}(n)$ time to allocate
 the new memory and copy the $n$ values from the old memory to the new
 memory.
 
@@ -316,11 +316,11 @@ to `this` List instance as its result.  Of course after checking if
 the list needs to grow, you first need to shift all items up by 1 index
 before putting the new value into index 0 of the `values` array.
 
-Then likewise the `operator<<()` which we have choosen to overload for
-the prepend operation can be defined, and its implemention is simply
+Then likewise the `operator<<()` which we have chosen to overload for
+the prepend operation can be defined, and its implementation is simply
 to call the `prepend()` function you implemented first.
 
-NOTE: it would probably syntatically make more sense to specify prepend as
+NOTE: it would probably syntactically make more sense to specify prepend as
 
 ```
 5 << l1;
@@ -369,7 +369,7 @@ two lists to create a new third list.  Also notice the above implies that
 `l1` and `l2` should not me modified as a result of this operation, 
 they are still both lists with 3 values after the concatenation.  This
 further implies that a new list needs to be dynamically created and returned
-in the `operator+()` that holds the result of the concatentation.
+in the `operator+()` that holds the result of the concatenation.
 
 There are some subtle difficulties with memory management that we must
 take into consideration here. We could try using, for example, the copy
@@ -397,7 +397,7 @@ So the approach you should use for `concatenate` is as follows.
    with this array of the concatenated values you just created.
 5. Once you have dynamically allocated your new `List` you don't need the array 
    from step 1 anymore, so `delete` it.
-6. You should return th newly dynamically allocated `List` object as a reference from
+6. You should return the newly dynamically allocated `List` object as a reference from
    your function.
    
 For step 5, lets say you created an array of integers named `concatenatedValues`
@@ -430,10 +430,224 @@ to the `feedback` branch of your repository.
 ## Task 4: Templatize `List` Class
 
 With task 4 we will be shifting gears and turn our attention to
-turning your List class into a template class, so that we can
-manage lists of types other than `int` types as we have now.
+making your List class into a template class, so that we can
+manage lists of types other than `int` as we have now.
 
-We will be us
+We will also be getting some practice using git and GitHub in this
+assignment, as we are going to perform the templatization of the
+`List` class in a new branch.  So don't start task 4 until you have
+all of the previous tasks committed and their tests passing.  Once you
+have done that, unlike for previous assignments, merge your open
+pull request back into the main branch, so that your changes on the
+feedback branch are merged back into main.
+
+Once the tasks 1-3 are merged back to the main branch, we will create a new
+branch called `template` for this last task.  You can use the command line
+or VSCode to create a new branch in your repository.  Your starting point
+of the `template` branch is from the `main` branch, but after the
+merge back of your completion of tasks 1-4.
+
+We need to modify and add additional tests in order to make `List` into
+a template class, so that we can test not just a `List` of `int` values, as
+you currently have, but create lists of any type, e.g. `List<int>`,
+`List<string>`, `List<char>`, or `List<MyOwnClass>`.
+I have created and updated a set of tests and the build system for you
+in order to start templatizing your `List` class.  There is a subdirectory 
+called `template` in your project that contains some files.  Copy the
+files named `assg-tests-int-template.cpp` and `assg-tests-string-template.cpp`
+to your `src` subdirectory.  These files will be replacing the old
+`assg-tests.cpp` file that was testing the nontemplatized version
+of `List` that only managed `int` values.  There is also a new
+`Makefile` that will use these 2 tests files to build the test executable,
+copy this new Makefile from the `template` and replace the
+current Makefile you have at the root of the directory.
+
+If you try and compile at this point the compilation will fail.  The tests
+expect a templatized `List` class, and the one you have in your `src` and
+`include` directories does not support template types.  Rename your current
+header and implementation files so that you have your original untemplatized
+code to refer to.  Name them something like `List-notemplate.hpp` and
+`List-notemplate.cpp`.  Then you will also find files named `List.hpp`
+and `List.cpp` in the `template` directory.  Copy these files to `include`
+and `src` respectively.  I have gotten you started on turning `List` into a
+template class, but have only templatized the class declaration and the
+class constructors and destructor.
+
+Once you copy over all of the files from the `template` subdirectory, your
+project should now build and run the unit tests.  You should check that
+this is true at this point by building and running the tests.  Most all of
+the tests are commented out again, so not much will be tested yet, but you
+should be back to a compilable and runnable state.
+
+You should examine how the `List` class has been turned into a template
+class.  In the `List.hpp` file, there are just a few subtle changes.  The
+declaration of the `List` class is now proceeded by the template specifier
+keyword:
+
+```c++
+template <class T>
+class List
+{
+...
+}
+```
+
+As we talked about in this unit, this declares that `List` is a 
+template class, templatized on a type we have called `T` here.
+The `List` class will be able to hold and manage type `T` object,
+where `T` can be replaced by actual types in our code.
+
+**NOTICE**: one other important change here.  The type of
+the `values` array/pointer is now:
+
+```
+T* values;
+```
+This reflects the fact that we are templatizing our list, so we
+need it to now hold some generic type `T` instead of concrete
+`int` type.  Also notice that not all `int` types change.  We
+are holding values of any generic type `T`, but the current
+`size` and the current `allocationSize` of the list are still
+integer types.
+
+Also notice the standard and copy constructors.  The standard
+constructor used to take an array of `int` values in order to
+construct a list with:
+
+```c++
+List(int size, int values[]);   // standard constructor
+```
+
+but now we say instead that we expect an array of some type `T`
+for this constructor:
+
+```c++
+List(int size, T values[]);  // standard constructor now expect generic type T values
+```
+
+Likewise the copy constructor used to expect a `List` as the 
+parameter to copy into a new list.  But now we no longer have
+nontemplate `List` classes, but instead the class must always be
+templatized:
+
+```c++
+List(const List<T>& list);  // copy constructor expects a List<T> containing type T values
+```
+
+You should also examine the implementations of these constructors
+and destructor in the `List.cpp` implementation file. First of all,
+now that the `List` class is a template class, all member functions
+of `List` must become template functions, even constructors and
+destructors.  So now you will see that all of the constructors and
+the destructor that I templatized for you now contain the 
+`template <class T>` modifier before them.
+
+Likewise, all of these class methods / constructors / destructors
+are now members of `List<T>`, so they all have `List<T>::` before
+the name of the constructor.  All regular member functions are also
+now members of the `List<T>` class instead of just of a `List`, so
+all member functions you modify likewise need the `template`
+preamble before them, and need to be changed to be members of
+the `List<T>>::` class namespace.
+
+These are not the only changes that were done to turn these
+constructors into template member functions.  Examine more closely the
+two constructors we discussed before.  For example, the standard and
+copy constructors now dynamically create an array of `T` values rather
+than of `int` values:
+
+```c++
+this->values = new T[allocationSize];
+```
+
+In general you will have to make similar changes in the member methods
+you templatize.  Not all `int` types become a generic `T` type.  But 
+anytime you are passing in a or referring to a value that will be managed by
+the `List<T>`, it will need to be turned into a generic type `T` instead of
+the `int` it currently is.
+
+The tests in the two new testing files have mostly been commented out again.
+You will find the first two `TEST_CASE` sections are uncommented in both
+`assg-tests-int-template.cpp` and `assg-tests-string-template.cpp`.
+As the names hopefully suggest, the `int` tests are testing 
+`List<int>`, a list of `int` values, and the `string` tests are
+testing `List<string>` list containers.  While the second
+test case is uncommented, most of the checks are actually commented out.
+Only the invocation of the constructors for the class are actually
+currently executing.
+
+To begin templatizing the whole class, start by uncommenting the first 
+`CHECK` that calls the `getSize()` member method.  Copy the
+declaration you had from your `List-notemplate.hpp` and `List-notemplate.cpp`
+files for the `getSize()` declaration and implementation back into
+your `List.[hpp|cpp]` files.  Then convert this member
+method into a template member method.  The methods
+`getSize()`, `getAllocationSize()` and `str()` should all be relatively
+easy, you only need to change them into template functions, none
+of them create or refer to any values in the container that need
+to be changed from `int` to type `T` declarations.
+
+Once you get these working, you next need to templatize the 
+`operator[]` indexing operator, and the `operator==` boolean
+comparison operator.  These again do not actually create any
+local variables that are values of the `List`, so you should
+be able to simply convert them into template functions without
+having to do much more.  
+
+If you convert those functions to template member functions, then
+that should be enough to allow you to pass all of the tests in
+the second `TEST_CASE` of the `List<int>` tests.  But also, after
+or while you are doing this, you could and should uncomment
+the same tests of these function in the `List<string>` test file as well.
+If you templatize these function correctly, you should be able to pass
+the tests both when using lists of `int` values and when using
+lists of `string` values.
+
+Once you get the first two test cases in both of the testing files
+to pass, I suggest you try and templatize the
+`growListIfNeeded()` member function.  This is another function
+that was given to you, but you should be using it in the
+operators you implemented in tasks 1-3 before.
+This member function does require you to templatize some of the
+local member declarations to be of generic type `T` instead of 
+`int`.  Specifically, the grow list function creates a new
+array of values if it needs to, and of course this array needs to be
+of generic type `T` now.  You should modify this function and make
+sure your code still compiles and passes the first two test cases
+after making your modifications.
+
+At this point, if you have templatized `growListIfNeeded()` and the other
+accessor and operator methods, you can begin templatizing the functions
+and operators you added in tasks 1-3.  With practice you may be able to
+go faster, but it is still recommended to do these 1 at a time, as it is very
+easy to get lost in a sea of compiler error messages when working
+with class templates.  Start by uncommenting the tests of the
+`List<int>` of your `append()` member method, and then add and templatize
+this method.  As a hint, remember that the value being passed into
+`append()` is being added into the list, so it is no longer just an
+`int` but it needs to be a generic template class `T` now.
+
+If the test passes for the `List<int>`, try uncommenting it
+in `List<string>` as well.  Then you can proceed to uncomment
+each test, and templatized your other overloaded operators and
+member functions you added in tasks 1-3.
+
+Once you are done with that, you should be able to now pass all of the tests 
+with all of them now uncommented.  If you want, you can now delete the
+`template` subdirectory.  And you can delete the files
+`List-notemplate.[hpp|cpp]` as well as the original 
+`assg-tests.cpp` file, none of these are used any longer in
+your templatized version of the `List<T>` class.  
+
+You should have done these changes in a new branch called `template`,
+as stated in step 1.  Once you are satisfied, commit your changes to
+templatize the class to the `template` branch, and push your changes
+to your repository.  Hopefully you will now be able to pass all of the
+GitHub test actions.  Create a pull request for these changes for the
+Task 4 from your `template` branch, and you are then done with this
+assignment.
+
+
 
 # Assignment Submission
 

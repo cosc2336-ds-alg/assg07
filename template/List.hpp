@@ -28,6 +28,7 @@ using namespace std;
  * Notice the overloaded operator[].  We will talk more about operator
  * overloading in the next unit or two.
  */
+template <class T>
 class List
 {
 private:
@@ -42,27 +43,24 @@ private:
   int allocationSize;
   /// @brief the integers values contained in the list.  This will
   ///   be a dynamically allocated array of integers.
-  int* values;
+  T* values;
 
   // private member methods for managing the List internally
-  void growListIfNeeded();
-
+  
 public:
   // constructors and destructors
   List();                       // default constructor
-  List(int size, int values[]); // standard constructor
-  List(const List& list);       // copy constructor
+  List(int size, T values[]);   // standard constructor
+  List(const List<T>& list);    // copy constructor
   ~List();                      // destructor
 
-  // accessor methods
-  int getSize() const;
-  int getAllocationSize() const;
-  string str() const;
+  // accessor methods 
 
   // overloaded operators
-  int& operator[](int index);
-  bool operator==(const List& rhs) const;
-  friend ostream& operator<<(ostream& out, const List& rhs);
+
+  // friend functions / operators
+  template <typename U>
+  friend ostream& operator<<(ostream& out, const List<U>& rhs);
 };
 
 
