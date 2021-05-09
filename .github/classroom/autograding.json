@@ -8,7 +8,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 10,
-      "points": 15
+      "points": 10
     },
     {
       "name": "task 0 test given List accessors and operators",
@@ -28,7 +28,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 10,
-      "points": 25
+      "points": 20
     },
     {
       "name": "task 2 prepend operation",
@@ -38,7 +38,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 10,
-      "points": 25
+      "points": 20
     },
     {
       "name": "task 3 concatenate operation",
@@ -48,7 +48,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 10,
-      "points": 25
+      "points": 20
     },
     {
       "name": "task 4 List template class",
@@ -58,7 +58,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 10,
-      "points": 5
+      "points": 20
     }
   ]
 }
