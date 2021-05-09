@@ -128,7 +128,7 @@ template <typename U>
 ostream& operator<<(ostream& out, const List<U>& rhs)
 {
   // reuse List str() method to stream to output stream
-  out << rhs.str();
+  //out << rhs.str(); // uncomment this after templatizing str() if want output operator for List
 
   // return the modified output stream as our result
   return out;

@@ -445,7 +445,12 @@ Once the tasks 1-3 are merged back to the main branch, we will create a new
 branch called `template` for this last task.  You can use the command line
 or VSCode to create a new branch in your repository.  Your starting point
 of the `template` branch is from the `main` branch, but after the
-merge back of your completion of tasks 1-4.
+merge back of your completion of tasks 1-3.  You should checkout the
+`main` branch again, and then do a git pull, and confirm that you have
+all code you just implemented compiling and running tests in the main
+branch.  Once you are back on the `main` branch and have merged and
+pulled your work, create a new branch called `template` to perform
+the following tasks.
 
 We need to modify and add additional tests in order to make `List` into
 a template class, so that we can test not just a `List` of `int` values, as
