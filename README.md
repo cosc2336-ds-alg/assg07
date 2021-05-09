@@ -110,7 +110,7 @@ at the time.  Notice how they work.  For example, the `operator==()`
 allows us to test two `List` items to see if they contain all of the
 exact same values:
 
-```
+```c++
   int values2[] = {1, 3, -2, -4, 7};
   List l2(5, values2);
 
@@ -149,7 +149,7 @@ in some of this weeks learning materials.  Basically we need the
 instance of the class we want to send to send to the output stream
 on the right hand size of the output stream operator:
 
-```
+```c++
 List l1;
 
 cout << l1;
@@ -220,7 +220,7 @@ the member function.  The reason for this will become apparent
 when you implement the overloaded operator.  To return
 a reference to this instance, simply do a 
 
-```
+```c++
    return *this;
 ```
 
@@ -255,7 +255,7 @@ for your own user defined data type.  Overloading this operator
 to mean appending a value allows us to write code like the
 following:
 
-```
+```c++
 List l1;
 
 l1 >> 5;
@@ -266,7 +266,7 @@ This will append the new value of 5 onto the end of the initially empty
 object from the append operator, it allows us to chain append operations,
 for example:
 
-```
+```c++
 l1 >> 5 >> 3 >> 7;
 ```
 
@@ -322,7 +322,7 @@ to call the `prepend()` function you implemented first.
 
 NOTE: it would probably syntactically make more sense to specify prepend as
 
-```
+```c++
 5 << l1;
 ```
 
@@ -353,7 +353,7 @@ before proceeding.
 We would like to support the concatenation of two lists together to
 create a new list.  For example, if we have
 
-```
+```c++
 List l1;
 l1 >> 1 >> 2 >> 3;
 
@@ -404,7 +404,7 @@ For step 5, lets say you created an array of integers named `concatenatedValues`
 that has is of size `concatenatedSize`.  Then you would dynamically allocate a new
 list using the array based constructor, like
 
-```
+```c++
 List* concatenatedList = new List(concatenatedSize, concatenatedValues);
 ```
 
@@ -412,7 +412,7 @@ The result as shown here, as always, is a pointer to the newly allocated List th
 now on the heap.  You can return this dynamically allocated reference by dereferencing
 the pointer
 
-```
+```c++
 return *concatenatedList;
 ```
 
@@ -500,7 +500,7 @@ where `T` can be replaced by actual types in our code.
 **NOTICE**: one other important change here.  The type of
 the `values` array/pointer is now:
 
-```
+```c++
 T* values;
 ```
 This reflects the fact that we are templatizing our list, so we
