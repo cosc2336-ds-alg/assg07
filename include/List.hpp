@@ -18,7 +18,6 @@
 #include <string>
 using namespace std;
 
-
 /** @class List
  * @brief A basic List of integer values for the assignment.
  *
@@ -65,7 +64,6 @@ public:
   friend ostream& operator<<(ostream& out, const List& rhs);
 };
 
-
 /** @class ListMemoryBoundsException
  * @brief Memory Bounds Exception for the List class.
  *
@@ -85,4 +83,4 @@ private:
   string message;
 };
 
-#endif  // define _LIST_HPP_
+#endif // define _LIST_HPP_

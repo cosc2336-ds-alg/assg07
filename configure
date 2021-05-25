@@ -43,6 +43,17 @@ then
     ln -s ../${BASE_NAME}/.vscode .vscode
 fi
 
+# link the clang-format formatter config files so will be used
+# by VSCode when running the default code formatter
+if [ ! -L ".clang-format" ]
+then
+    echo ""
+    echo "Link base clang-format configuration to this project so will be used by VSCode IDE"
+    echo "----------------------------------------------------------------------------------"
+    echo ""
+    ln -s ../${BASE_NAME}/config/clang-format.cfg .clang-format
+fi
+
 # make sure the project build uses the version we set up here
 sed -i "s/VERSION=.*/VERSION=${VERSION}/" Makefile
 

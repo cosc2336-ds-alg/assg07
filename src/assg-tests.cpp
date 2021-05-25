@@ -16,29 +16,24 @@
  * the catch2 unit test framework to define the test cases and test
  * assertions.
  */
-#include <iostream>
-#include "catch.hpp"
 #include "List.hpp"
+#include "catch.hpp"
+#include <iostream>
 using namespace std;
-
 
 /** Test List with default constructor can compile
  */
-TEST_CASE("List<int> test template class compiles",
-          "[task0]")
+TEST_CASE("List<int> test template class compiles", "[task0]")
 {
   List l1;
   // doesn't actually run any tests, so only need to
   // get the default constructor implemented here
 }
 
-
-
 /** Tests of the List type you have been given to use for
  * this assignment.
  */
-TEST_CASE("List<int> test of List user defined type for this assignment",
-          "[task0]")
+TEST_CASE("List<int> test of List user defined type for this assignment", "[task0]")
 {
   // construct an empty list
   List l1;
@@ -141,7 +136,7 @@ TEST_CASE("List<int> test of List user defined type for this assignment",
   CHECK_FALSE(l3 == l2);
 
   // test empty lists are equal
-  List l4;  // another empty list, like l1
+  List l4; // another empty list, like l1
   CHECK(l1 == l4);
   CHECK(l4 == l1);
 
@@ -173,9 +168,7 @@ TEST_CASE("List<int> test of List user defined type for this assignment",
   List l7(4, values7);
   CHECK_FALSE(l6 == l7);
   CHECK_FALSE(l7 == l6);
-
 }
-
 
 /** Task 1: implement append() member function operation for List class
  */
@@ -324,7 +317,6 @@ TEST_CASE("List<int> test of List user defined type for this assignment",
    }
  */
 
-
 /** Task 1: overload operator>>() operation for append for List class
  */
 /*
@@ -471,7 +463,6 @@ TEST_CASE("List<int> test of List user defined type for this assignment",
    }
    }
  */
-
 
 /** Task 2: implement prepend() member function operation for List class
  */
@@ -620,7 +611,6 @@ TEST_CASE("List<int> test of List user defined type for this assignment",
    }
  */
 
-
 /** Task 2: overload operator<<() operation for List class prepending
  */
 /*
@@ -768,7 +758,6 @@ TEST_CASE("List<int> test of List user defined type for this assignment",
    }
  */
 
-
 /** Task 3: implement concatenate() member function to concatenate
  *    two lists into a new list.
  */
@@ -911,7 +900,6 @@ TEST_CASE("List<int> test of List user defined type for this assignment",
    }
    }
  */
-
 
 /** Task 3: implement operator+ overloaded concatenate operator
  */
