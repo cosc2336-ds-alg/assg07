@@ -437,41 +437,95 @@ assignment, as we are going to perform the templatization of the
 all of the previous tasks committed and their tests passing through
 task 3.
 
-Once the tasks 1-3 are passing the tests for the nontemplate version,
-we will create a new branch called `template` in your repository for
-this last task.  You can use the command line or VSCode to create a
-new branch in your repository.  Your starting point of the `template`
-branch is from your current `main` branch, which should have the
-tasks 1-3 implemented on it.  When you are ready to begin, create
-a new branch called `template` and check out this branch to
-begin performing the following tasks in it.
+Once the tasks 1-3 are passing the GitHub actions/tests, and you have
+all of the work recorded and pused as commits into the `Feedback`
+pull request, then you can turn your attention to working on task 4.
+We are going to put all work to templatize the function into a new
+branch.  We would like to start this branch back before you started adding
+in commits for the tasks 1-3.  We want to end up with the
+non-template version of the code on the main and feedback branch of
+your repository, which are already created.  We want to create a new
+branch called `template` that branches from the initial commit
+of your repository, and records all of your commits to templatize
+the `List` class for task 4.
 
-We need to modify and add additional tests in order to make `List` into
-a template class, so that we can test not just a `List` of `int` values, as
-you currently have, but create lists of any type, e.g. `List<int>`,
-`List<string>`, `List<char>`, or `List<MyOwnClass>`.
+You first need to checkout the commit in you DevBox that happened before
+your first commit for task 1.  Unfortunately it seems like VSCode has
+a bug that makes it difficult to checkout specific commits, a task
+that is easy to do from the git command line.  So you will need to
+open up a terminal and do something like the following:
+
+```
+$ vagrant@devbox:~/sync/assg/assg05-test-team$ git checkout 8e543b45
+Note: switching to '8e543b45'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 8e543b4 Initial commit
+
+```
+
+Notice that you should run this command from your assignment repository
+directory for this assignment.  Also notice you need to specify a funny
+looking number for the checkout command.  This is the git commit hash
+for the commit I wanted to checkout and switch to.  These hashes are
+really long, you only need to specify the first 8 digits or so if typing them
+in by hand.  But the git hash id you need will be different for you, you will
+need to look through the history of your commits and find the commit
+id that corresponds to the commit just before your first task 1 commit.
+
+Once you have checked out this commit, if you go back and look at 
+the code you added, you will see it is now gone.  This is because you have
+moved back in time in your commit history, and you should be at the place
+just before you started doing your work.  This is what we want.  We want to
+branch off from this point in time and add the code again, but this
+time first turing the class into a template class.  As the message indicated
+from the checkout, we should create and switch to the new branch we want
+to begin work on.  So again from the terminal, do as it says and create
+a template branch:
+
+```
+vagrant@devbox:~/sync/assg/assg05-test-team$ git switch -c template
+Switched to a new branch 'template'
+```
+
+Once on the template branch, you will be able to add in new work, and stage,
+commit and push changes as you have been doing.  These changes will be pushed
+directly to the new `template` branch you are working on at your GitHub
+classroom repository.
+
+We need to modify and add additional tests in order to make `List`
+into a template class, so that we can test not just a `List` of `int`
+values, as you currently have, but create lists of any type,
+e.g. `List<int>`, `List<string>`, `List<char>`, or `List<MyOwnClass>`.
 I have created and updated a set of tests and the build system for you
-in order to start templatizing your `List` class.  There is a subdirectory 
-called `template` in your project that contains some files.  Copy the
-files named `test-int-template.cpp` and `test-string-template.cpp`
-to your `src` subdirectory.  These files will be replacing the old
-`tests-List.cpp` file that was testing the nontemplatized version
-of `List` that only managed `int` values.  There is also a new
-`Makefile` that will use these 2 tests files to build the test executable,
-copy this new Makefile from the `template` subdirectory and replace the
-current Makefile you have at the root of the directory.
-
-If you try and compile at this point the compilation will fail.  The
-tests expect a templatized `List` class, and the one you have in your
-`src` and `include` directories does not support template types.
-Rename your current header and implementation files so that you have
-your original untemplatized code to refer to.  Name them something
-like `List-notemplate.hpp` and `List-notemplate.cpp`.  You will also
-see there are files named `List.hpp` and `List.cpp` in the `template`
-subdirectory.  Copy these files to `include` and `src` respectively.
-I have gotten you started on turning `List` into a template class, but
-have only templatized the class declaration and the class constructors
-and destructor.
+in order to start templatizing your `List` class.  There is a
+subdirectory called `template` in your project that contains some
+files.  Copy the files named `test-int-template.cpp` and
+`test-string-template.cpp` to your `src` subdirectory.  These files
+will be replacing the old `tests-List.cpp` file that was testing the
+nontemplatized version of `List` that only managed `int` values.
+There is also a new `Makefile` that will use these 2 tests files to
+build the test executable, copy this new Makefile from the `template`
+subdirectory and replace the current Makefile you have at the root of
+the directory.  You will also see there are files named `List.hpp` and
+`List.cpp` in the `template` subdirectory.  Copy these files to
+`include` and `src` respectively.  I have gotten you started on
+turning `List` into a template class, but have only templatized the
+class declaration and the class constructors and destructor.
 
 Once you copy over all of the files from the `template` subdirectory, your
 project should now build and run the unit tests.  You should check that
@@ -479,10 +533,23 @@ this is true at this point by building and running the tests.  Most all of
 the tests are commented out again, so not much will be tested yet, but you
 should be back to a compilable and runnable state.
 
-You should examine how the `List` class has been turned into a template
-class.  In the `List.hpp` file, there are just a few subtle changes.  The
-declaration of the `List` class is now preceeded by the template specifier
-keyword:
+If you get the copied tests ant templatized `List` to compile and run
+the tests, you should make a commit with these changes and push it to
+the `template` branch of your repository.  Take a moment to examine
+the new branch in your repository, and the history of the commits
+now along your `template` branch.  Also, lets create a new
+pull request called `Template`, that will be tracking all changes
+of the `template` branch for merge back into the `main` branch.
+We will not ultimately merge this work into the `main` branch, as
+we want to keep the `template` work separate from the `main` 
+nontemplate work.  But having a `Template` pull request that
+tracks the `template` branch will be a convenient way to gather
+all work and commits while templatizing the `List` class.
+
+After committing and pushing, you should examine how the `List` class
+has been turned into a template class.  In the `List.hpp` file, there
+are just a few subtle changes.  The declaration of the `List` class is
+now preceeded by the template specifier keyword:
 
 ```c++
 template <class T>
@@ -492,10 +559,10 @@ class List
 }
 ```
 
-As we talked about in this unit, this declares that `List` is a 
-template class, templatized on a type we have called `T` here.
-The `List` class will be able to hold and manage type `T` objects,
-where `T` can be replaced by actual types in our code.
+As we talked about in this unit, this declares that `List` is a
+template class, templatized on a generic type or class we have called
+`T` here.  The `List` class will be able to hold and manage type `T`
+objects, where `T` can be replaced by actual types in our code.
 
 **NOTICE**: one other important change here.  The type of
 the `values` array/pointer is now:
@@ -504,7 +571,7 @@ the `values` array/pointer is now:
 T* values;
 ```
 This reflects the fact that we are templatizing our list, so we
-need it to now hold some generic type `T` instead of concrete
+need it to now hold an array of some generic type `T` instead of concrete
 `int` types.  Also notice that not all `int` types change.  We
 are holding values of some generic type `T` in our list, but the current
 `size` and the current `allocationSize` of the list are still
@@ -576,35 +643,50 @@ test case is uncommented, most of the checks are actually commented out.
 Only the invocation of the constructors for the class are actually
 currently executing.
 
-To begin templatizing the whole class, start by uncommenting the first 
-`CHECK` that calls the `getSize()` member method.  Copy the
-declaration you had from your `List-notemplate.hpp` and `List-notemplate.cpp`
-files for the `getSize()` declaration and implementation back into
-your `List.[hpp|cpp]` files.  Then convert this member
-method into a template member method.  The methods
-`getSize()`, `getAllocationSize()` and `str()` should all be relatively
-easy, you only need to change them into template functions, none
-of them create or refer to any values in the container that need
-to be changed from `int` to type `T` declarations.
+To begin templatizing the whole class, start by uncommenting the first
+`CHECK` that calls the `getSize()` member method. You want to add back
+in `getSize()` to the `List` class, converting it into a template
+member function.  There are ways to use git to stash files, and switch
+between commits to pull out code from other commits into your current
+work.  However, for simplicity, I suggest you simply open up your
+GitHub assignment classroom, make sure you are looking at your `main`
+branch, and then copy the `getSize()` nontemplate method from there
+back into your work.  Then convert this member method into a template
+member method.  The methods `getSize()`, `getAllocationSize()` and
+`str()` should all be relatively easy, you only need to change them
+into template functions, none of them create or refer to any values in
+the container that need to be changed from `int` to type `T`
+declarations.  Templatize these 3 member methods first.  Uncomment any
+tests in the first 2 test cases calling `getSize()`,
+`getAllocationSize()` or `str()`.  Don't forget to uncomment both in
+the `int` tests as well as in the `string` tests.  The
+`test-string-template.cpp` testing file is testing that your changes
+work when the `List` holds `string` type values in the list.  Once the
+tests pass for these 3 functions in both testing files, create a new
+commit and push it to your `template` branch of your GitHub classroom
+repository.
 
-Once you get these working, you next need to templatize the 
+Once you get these working, you next need to templatize the
 `operator[]` indexing operator, and the `operator==` boolean
-comparison operator.  These again do not actually create any
-local variables that are values of the `List`, so you should
-be able to simply convert them into template functions without
-having to do much more.  
+comparison operator.  These again do not actually create any local
+variables that are values of the `List`, so you should be able to
+simply convert them into template functions without having to do much
+more, though the indexing `operator[]` does return an `int&`, but
+now for a template `List`, it should be returning a generic `T&`
+reference, and the `operator==` will be expecting a `List<T>` now as
+the right hand side list to compare with.
 
-If you convert those functions to template member functions, then
-that should be enough to allow you to pass all of the tests in
-the second `TEST_CASE` of the `List<int>` tests.  But also, after
-or while you are doing this, you could and should uncomment
-the same tests of these function in the `List<string>` test file as well.
-If you templatize these function correctly, you should be able to pass
-the tests both when using lists of `int` values and when using
-lists of `string` values.
+If you convert those functions to template member functions, then that
+should be enough to allow you to pass all of the tests in the second
+`TEST_CASE` of the `List<int>` tests.  But also, after or while you
+are doing this, you could and should uncomment the same tests of these
+function in the `List<string>` test file as well.  If you templatize
+these functions correctly, you should be able to pass the tests both
+when using lists of `int` values and when using lists of `string`
+values.
 
 Once you get the first two test cases in both of the testing files
-to pass, I suggest you try and templatize the
+to pass, I suggest you next templatize the
 `growListIfNeeded()` member function.  This is another function
 that was given to you, but you should be using it in the
 operators you implemented in tasks 1-3 before.
@@ -614,7 +696,10 @@ local member declarations to be of generic type `T` instead of
 array of values if it needs to, and of course this array needs to be
 of generic type `T` now.  You should modify this function and make
 sure your code still compiles and passes the first two test cases
-after making your modifications.
+after making your modifications.  There are no explicit
+tests of the private `growListIfNeeded()`, but if your code
+compiles and runs it would be good to push a commit of this
+work to the `template` branch of your repository now.
 
 At this point, if you have templatized `growListIfNeeded()` and the other
 accessor and operator methods, you can begin templatizing the functions
@@ -634,20 +719,22 @@ member functions you added in tasks 1-3.
 
 Once you are done with that, you should be able to now pass all of the tests 
 with all of them now uncommented.  If you want, you can now delete the
-`template` subdirectory.  And you can delete the files
-`List-notemplate.[hpp|cpp]` as well as the original 
-`test-List.cpp` file, none of these are used any longer in
-your templatized version of the `List<T>` class.
+`template` subdirectory and you can delete the old `test-List.cpp`
+testing file if you didn't already.  You should make a new commit
+with the unnecessary files removed and push it to the template
+branch, though make sure everything still compiles and runs before
+and after pushing these changes.
 
 You should have done these changes in a new branch called `template`,
-as stated in step 1.  Once you are satisfied, commit your changes to
-templatize the class to the `template` branch, and push your changes
-to your repository.  Hopefully you will now be able to pass all of the
-GitHub test actions.  Create a pull request for these changes for the
-Task 4 from your `template` branch, and you are then done with this
-assignment.
-
-
+as stated at the start of this task.  Once you are satisfied, commit
+your changes to templatize the class to the `template` branch, and
+push your changes to your repository.  Hopefully you will now be able
+to pass all of the GitHub test actions.  The `Template` pull request
+you created should show all of the commits you made to templatize your
+`List` class.  We will not be merging this pull request back to the
+`main` branch.  We want to leave it open to keep separate branchs of
+development possible for the nontemplate and templatized versions of
+this code.
 
 # Assignment Submission
 

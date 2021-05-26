@@ -19,55 +19,6 @@
 #include <string>
 using namespace std;
 
-/** @brief Grow list
- *
- * Private member method that will increase the memory allocation if
- * the list is currently at capacity.  To do this, we double the
- * current allocation, copy all of the values from the original block
- * of memory to the new block of memory, then delete the old block
- * that is no longer needed.  This method is called by methods that
- * need to grow the list, to ensure we have enough allocated capacity
- * to accommodate the growth.
- */
-void List::growListIfNeeded()
-{
-  // if size is still less than what we have allocated, we still have room
-  // to grow at least one or more items in sizes
-  if (size < allocationSize)
-  {
-    return;
-  }
-
-  // otherwise size is equal to our allocation, double the size of our allocation
-  // to accommodate future growth, or make size 10 initially by default if
-  // an empty list is being grown
-  if (allocationSize == 0)
-  {
-    allocationSize = INITIAL_ALLOCATION_SIZE;
-  }
-  else
-  {
-    allocationSize = 2 * allocationSize;
-  }
-
-  // dynamically allocate a new block of values of the new size
-  int* newValues = new int[allocationSize];
-
-  // copy the values from the original memory to this new block of memory
-  for (int index = 0; index < size; index++)
-  {
-    newValues[index] = values[index];
-  }
-
-  // we don't need the old block of memory anymore, be good managers of
-  // memory and return it to the heap
-  delete[] values;
-
-  // now make sure we are using the new block of memory going forward for this
-  // list
-  values = newValues;
-}
-
 /** default constructor
  * Construct an empty list.  The empty list will have no allocated memory
  * nor any values.
@@ -302,6 +253,55 @@ ostream& operator<<(ostream& out, const List& rhs)
 
   // return the modified output stream as our result
   return out;
+}
+
+/** @brief Grow list allocation
+ *
+ * Private member method that will increase the memory allocation if
+ * the list is currently at capacity.  To do this, we double the
+ * current allocation, copy all of the values from the original block
+ * of memory to the new block of memory, then delete the old block
+ * that is no longer needed.  This method is called by methods that
+ * need to grow the list, to ensure we have enough allocated capacity
+ * to accommodate the growth.
+ */
+void List::growListIfNeeded()
+{
+  // if size is still less than what we have allocated, we still have room
+  // to grow at least one or more items in sizes
+  if (size < allocationSize)
+  {
+    return;
+  }
+
+  // otherwise size is equal to our allocation, double the size of our allocation
+  // to accommodate future growth, or make size 10 initially by default if
+  // an empty list is being grown
+  if (allocationSize == 0)
+  {
+    allocationSize = INITIAL_ALLOCATION_SIZE;
+  }
+  else
+  {
+    allocationSize = 2 * allocationSize;
+  }
+
+  // dynamically allocate a new block of values of the new size
+  int* newValues = new int[allocationSize];
+
+  // copy the values from the original memory to this new block of memory
+  for (int index = 0; index < size; index++)
+  {
+    newValues[index] = values[index];
+  }
+
+  // we don't need the old block of memory anymore, be good managers of
+  // memory and return it to the heap
+  delete[] values;
+
+  // now make sure we are using the new block of memory going forward for this
+  // list
+  values = newValues;
 }
 
 /** @brief Memory bounds exception constructor

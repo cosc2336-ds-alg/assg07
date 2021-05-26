@@ -9,7 +9,7 @@ test_src  = test-int-template.cpp \
 	    test-string-template.cpp \
 	    ${assg_src}
 
-debug_src = $(PROJECT_NAME)-main.cpp \
+debug_src = main.cpp \
 	    ${assg_src}
 
 # template files, list all files that define template classes
