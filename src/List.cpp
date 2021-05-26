@@ -1,9 +1,9 @@
 /** @file List.cpp
+ *
  * @brief Implementations of member functions of the List
  *   of ints class for the Assignment Overloading and Templates
  *
  * @author Jane Programmer
- * @note   cwid : 123 45 678
  * @note   class: COSC 2336, Summer 2021
  * @note   ide  : VSCode Server 3.9.3, Gnu Development Tools
  * @note   assg : Assignment Overloading and Templates
@@ -19,7 +19,8 @@
 #include <string>
 using namespace std;
 
-/** grow list
+/** @brief Grow list
+ *
  * Private member method that will increase the memory allocation if
  * the list is currently at capacity.  To do this, we double the
  * current allocation, copy all of the values from the original block
@@ -80,7 +81,8 @@ List::List()
   values = nullptr;
 }
 
-/** standard constructor
+/** @brief Standard constructor
+ *
  * Construct a list of integer values from a (statically) defined and
  * provided array of integers.  We simply allocate a block of memory
  * dynamically large enough to hold the values, then copy the values
@@ -106,7 +108,8 @@ List::List(int size, int values[])
   }
 }
 
-/** copy constructor
+/** @brief Copy constructor
+ *
  * Provide a copy constructor for the List class.  A copy constructor
  * will be invoked whenver you assign one instance of a List to another.
  * For example
@@ -133,10 +136,11 @@ List::List(const List& list)
   }
 }
 
-/** destructor
- * Destructor for the List class.  A List may (or may not) have
- * a dynamically allocated block of memory associated with it.
- * Free up this block on destruction of a List instance.
+/** @brief Class destructor
+ *
+ * Destructor for the List class.  A List may (or may not) have a
+ * dynamically allocated block of memory associated with it.  Free up
+ * this block on destruction of a List instance.
  */
 List::~List()
 {
@@ -148,7 +152,8 @@ List::~List()
   }
 }
 
-/** size accessor
+/** @brief Size accessor
+ *
  * Accessor method to get the current size of this List of integers.
  *
  * @returns int Returns the current size of the list of integers.
@@ -158,7 +163,8 @@ int List::getSize() const
   return size;
 }
 
-/** allocation size accessor
+/** @brief Allocation size accessor
+ *
  * Accessor method to get the current amount of memory allocated
  * by and being managed by this list.
  *
@@ -170,7 +176,8 @@ int List::getAllocationSize() const
   return allocationSize;
 }
 
-/** List to string
+/** @brief List to string
+ *
  * Accessor method to construct and return a string representation
  * of the current values and status of this List instance.
  *
@@ -205,12 +212,13 @@ string List::str() const
   return out.str();
 }
 
-/** indexing operator
- * Provide a way to index individual values in our private
- * internal array of integers.  This allows code to, for the
- * most part, treated an instance of our List as if it were
- * an array, though we also provide bounds checking to ensure
- * no illegal access beyond the list bounds is attempted.
+/** @brief Indexing operator
+ *
+ * Provide a way to index individual values in our private internal
+ * array of integers.  This allows code to, for the most part, treated
+ * an instance of our List as if it were an array, though we also
+ * provide bounds checking to ensure no illegal access beyond the list
+ * bounds is attempted.
  *
  * @param index The index of the value it is desired to access from
  *   this List.
@@ -237,10 +245,11 @@ int& List::operator[](int index)
   return values[index];
 }
 
-/** boolean equals operator
- * Check if this List is equal to the right hand side (rhs)
- * list.  The lists are equal if their sizes are equal, and if
- * all elements in both lists are equal.
+/** @brief Boolean equals operator
+ *
+ * Check if this List is equal to the right hand side (rhs) list.  The
+ * lists are equal if their sizes are equal, and if all elements in
+ * both lists are equal.
  *
  * @param rhs The other list on the right hand side of the
  *   boolean comparison that we are comparing this List to.
@@ -272,8 +281,7 @@ bool List::operator==(const List& rhs) const
   return true;
 }
 
-/** List output operator
- *@brief overload output stream operator for List type.
+/** @brief Overload output stream operator for List type.
  *
  * Overload the output stream operator so that we can display current
  * values of a List on standard output.
@@ -296,8 +304,7 @@ ostream& operator<<(ostream& out, const List& rhs)
   return out;
 }
 
-/**
- * @brief ListMemoryBoundsException constructor
+/** @brief Memory bounds exception constructor
  *
  * Constructor for exceptions used for our
  * List  class.
@@ -309,16 +316,14 @@ ListMemoryBoundsException::ListMemoryBoundsException(const string& message)
   this->message = message;
 }
 
-/**
- * @brief ListMemoryBoundsException destructor
+/** @brief Memory bounds exception destructor
  *
  * Destructor for exceptions used for our ListMemoryBoundsException
  * class.
  */
 ListMemoryBoundsException::~ListMemoryBoundsException() {}
 
-/**
- * @brief ListMemoryBoundsException message
+/** @brief Memory bounds exception message
  *
  * Accessor method to access/return message given when an exception occurs.
  *

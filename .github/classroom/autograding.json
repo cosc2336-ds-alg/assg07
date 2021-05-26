@@ -21,7 +21,7 @@
       "points": 10
     },
     {
-      "name": "task 1 append operation",
+      "name": "task 1 append() operation",
       "setup": "make",
       "run": "./test --list-test-names-only [task1] | grep . && ./test [task1]",
       "input": "",
@@ -31,7 +31,7 @@
       "points": 20
     },
     {
-      "name": "task 2 prepend operation",
+      "name": "task 2 prepend() operation",
       "setup": "make",
       "run": "./test --list-test-names-only [task2] | grep . && ./test [task2]",
       "input": "",
@@ -41,7 +41,7 @@
       "points": 20
     },
     {
-      "name": "task 3 concatenate operation",
+      "name": "task 3 concatenate() operation",
       "setup": "make",
       "run": "./test --list-test-names-only [task3] | grep . && ./test [task3]",
       "input": "",

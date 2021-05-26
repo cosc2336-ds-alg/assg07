@@ -71,7 +71,7 @@ using and adding code to for this assignment.
 
 | File Name            | Description                                                                                         |
 |----------------------|-----------------------------------------------------------------------------------------------------|
-| `src/assg-tests.cpp` | Unit tests for the overloaded operators you are to implement.                                       |
+| `src/test-List.cpp`  | Unit tests for the overloaded operators you are to implement.                                       |
 | `include/List.hpp`   | Header file for the declarations of the `List` class you will be modifying and its defined API.     |
 | `src/List.cpp`       | Implementation file for the `List` member functions that implement the API and class functionality. |
 
@@ -87,17 +87,14 @@ you have completed the following setup steps.
    current class semester and section.
 2. Clone the repository using the SSH URL to your local class DevBox
    development environment.
-3. Checkout the 'origins/feedback' branch to your local working DevBox
-   repository.
-4. Configure the project by running the `configure` script from a terminal.
-5. Confirm that the project builds and runs, though no tests will be
+3. Configure the project by running the `configure` script from a terminal.
+4. Confirm that the project builds and runs, though no tests will be
    defined or run initially.  If the project does not build on the first
    checkout, please inform the instructor.
-6. You should create the issue for Task 1 and/or for all tasks for the assignment
+5. You should create the issue for Task 1 and/or for all tasks for the assignment
    now before beginning the first task.  On your GitHub account, go to issues,
-   and create it/them from the issue templates for the assignment.  Also you
-   should close the initial Pull request that should be automatically
-   opened for you, so that you can open your own when committing your work.
+   and create it/them from the issue templates for the assignment.  Make sure that
+   you link the issues to the `Feedback` pull request.
 
 
 # Assignment Tasks
@@ -205,8 +202,9 @@ size of $n$ of values that might be managed by the `List`
 
 ## Task 1: Implement `append()` and Overload `operator>>()`
 
-As usual make sure that you create Task 1 issue on GitHub and 
-are ready to create your Pull request for this assignment before beginning.
+As usual make sure that you create Task 1 issue on GitHub and have
+linked the issue with the 'Feedback' Pull request in this assignment
+repository before beginning.
 
 For the first task you will implement the ability to append a
 new value onto the end of our `List` of values.  You will first
@@ -280,12 +278,12 @@ implementation you already have to implement this overloaded operator.
 
 Once you are satisfied with your implementation of the overloaded
 append operator perform the usual actions.  Commit your changes
-and push them to the `feedback` branch of your repository.
+and push them to the `Feedback` pull request of your repository.
 
 ## Task 2: Implement `prepend()` and Overload `operator<<()`
 
 As usual make sure that you create the Task 2 issue on GitHub and 
-are updating your Pull request with work for this assignment.
+are linking with your Pull request for work on this task.
 
 Your `List` user defined data type you are creating uses a regular,
 though dynamically allocated, array as the actual storage of the
@@ -339,8 +337,8 @@ tests before you start implementing.  It is also suggested you complete `append(
 first, and then work on defining the overloaded `operator<<()`.
 
 Once you are satisfied with your implementation of the append operation
-for the `List` class, commit your changes and push them to the `feedback`
-branch of your repository.
+for the `List` class, commit your changes and push them to the `Feedback`
+pull request of your repository.
 
 
 ## Task 3: Implement `concatenate()` and Overload `operator+()`
@@ -424,7 +422,7 @@ the concatenation of the lists into a new list that you return.
 
 Once you are satisfied with your implementation of the `concatenate()` member
 function and overloaded operator, commit your work and push this commit
-to the `feedback` branch of your repository.
+to the `Feedback` pull request of your repository.
 
 
 ## Task 4: Templatize `List` Class
@@ -436,21 +434,17 @@ manage lists of types other than `int` as we have now.
 We will also be getting some practice using git and GitHub in this
 assignment, as we are going to perform the templatization of the
 `List` class in a new branch.  So don't start task 4 until you have
-all of the previous tasks committed and their tests passing.  Once you
-have done that, unlike for previous assignments, merge your open
-pull request back into the main branch, so that your changes on the
-feedback branch are merged back into main.
+all of the previous tasks committed and their tests passing through
+task 3.
 
-Once the tasks 1-3 are merged back to the main branch, we will create a new
-branch called `template` for this last task.  You can use the command line
-or VSCode to create a new branch in your repository.  Your starting point
-of the `template` branch is from the `main` branch, but after the
-merge back of your completion of tasks 1-3.  You should checkout the
-`main` branch again, and then do a git pull, and confirm that you have
-all code you just implemented compiling and running tests in the main
-branch.  Once you are back on the `main` branch and have merged and
-pulled your work, create a new branch called `template` to perform
-the following tasks.
+Once the tasks 1-3 are passing the tests for the nontemplate version,
+we will create a new branch called `template` in your repository for
+this last task.  You can use the command line or VSCode to create a
+new branch in your repository.  Your starting point of the `template`
+branch is from your current `main` branch, which should have the
+tasks 1-3 implemented on it.  When you are ready to begin, create
+a new branch called `template` and check out this branch to
+begin performing the following tasks in it.
 
 We need to modify and add additional tests in order to make `List` into
 a template class, so that we can test not just a `List` of `int` values, as
@@ -459,24 +453,25 @@ you currently have, but create lists of any type, e.g. `List<int>`,
 I have created and updated a set of tests and the build system for you
 in order to start templatizing your `List` class.  There is a subdirectory 
 called `template` in your project that contains some files.  Copy the
-files named `assg-tests-int-template.cpp` and `assg-tests-string-template.cpp`
+files named `test-int-template.cpp` and `test-string-template.cpp`
 to your `src` subdirectory.  These files will be replacing the old
-`assg-tests.cpp` file that was testing the nontemplatized version
+`tests-List.cpp` file that was testing the nontemplatized version
 of `List` that only managed `int` values.  There is also a new
 `Makefile` that will use these 2 tests files to build the test executable,
-copy this new Makefile from the `template` and replace the
+copy this new Makefile from the `template` subdirectory and replace the
 current Makefile you have at the root of the directory.
 
-If you try and compile at this point the compilation will fail.  The tests
-expect a templatized `List` class, and the one you have in your `src` and
-`include` directories does not support template types.  Rename your current
-header and implementation files so that you have your original untemplatized
-code to refer to.  Name them something like `List-notemplate.hpp` and
-`List-notemplate.cpp`.  Then you will also find files named `List.hpp`
-and `List.cpp` in the `template` directory.  Copy these files to `include`
-and `src` respectively.  I have gotten you started on turning `List` into a
-template class, but have only templatized the class declaration and the
-class constructors and destructor.
+If you try and compile at this point the compilation will fail.  The
+tests expect a templatized `List` class, and the one you have in your
+`src` and `include` directories does not support template types.
+Rename your current header and implementation files so that you have
+your original untemplatized code to refer to.  Name them something
+like `List-notemplate.hpp` and `List-notemplate.cpp`.  You will also
+see there are files named `List.hpp` and `List.cpp` in the `template`
+subdirectory.  Copy these files to `include` and `src` respectively.
+I have gotten you started on turning `List` into a template class, but
+have only templatized the class declaration and the class constructors
+and destructor.
 
 Once you copy over all of the files from the `template` subdirectory, your
 project should now build and run the unit tests.  You should check that
@@ -486,7 +481,7 @@ should be back to a compilable and runnable state.
 
 You should examine how the `List` class has been turned into a template
 class.  In the `List.hpp` file, there are just a few subtle changes.  The
-declaration of the `List` class is now proceeded by the template specifier
+declaration of the `List` class is now preceeded by the template specifier
 keyword:
 
 ```c++
@@ -499,7 +494,7 @@ class List
 
 As we talked about in this unit, this declares that `List` is a 
 template class, templatized on a type we have called `T` here.
-The `List` class will be able to hold and manage type `T` object,
+The `List` class will be able to hold and manage type `T` objects,
 where `T` can be replaced by actual types in our code.
 
 **NOTICE**: one other important change here.  The type of
@@ -510,8 +505,8 @@ T* values;
 ```
 This reflects the fact that we are templatizing our list, so we
 need it to now hold some generic type `T` instead of concrete
-`int` type.  Also notice that not all `int` types change.  We
-are holding values of any generic type `T`, but the current
+`int` types.  Also notice that not all `int` types change.  We
+are holding values of some generic type `T` in our list, but the current
 `size` and the current `allocationSize` of the list are still
 integer types.
 
@@ -527,12 +522,12 @@ but now we say instead that we expect an array of some type `T`
 for this constructor:
 
 ```c++
-List(int size, T values[]);  // standard constructor now expect generic type T values
+List(int size, T values[]);  // standard constructor now expects generic type T values
 ```
 
 Likewise the copy constructor used to expect a `List` as the 
 parameter to copy into a new list.  But now we no longer have
-nontemplate `List` classes, but instead the class must always be
+nontemplate `List` classes, instead the class must always be
 templatized:
 
 ```c++
@@ -543,17 +538,17 @@ You should also examine the implementations of these constructors
 and destructor in the `List.cpp` implementation file. First of all,
 now that the `List` class is a template class, all member functions
 of `List` must become template functions, even constructors and
-destructors.  So now you will see that all of the constructors and
-the destructor that I templatized for you now contain the 
+destructors.  So you will see that all of the constructors and
+the destructor that were templatized for you now contain the 
 `template <class T>` modifier before them.
 
-Likewise, all of these class methods / constructors / destructors
-are now members of `List<T>`, so they all have `List<T>::` before
-the name of the constructor.  All regular member functions are also
-now members of the `List<T>` class instead of just of a `List`, so
-all member functions you modify likewise need the `template`
-preamble before them, and need to be changed to be members of
-the `List<T>>::` class namespace.
+Likewise, all of these class methods / constructors / destructors are
+now members of `List<T>`, so they all have `List<T>::` before the name
+of the constructor function.  All regular member functions are also
+now members of the `List<T>` class instead of just of a `List`, so all
+member functions you modify likewise need the `template` preamble
+before them, and need to be changed to be members of the `List<T>>::`
+class namespace.
 
 These are not the only changes that were done to turn these
 constructors into template member functions.  Examine more closely the
@@ -573,7 +568,7 @@ the `int` it currently is.
 
 The tests in the two new testing files have mostly been commented out again.
 You will find the first two `TEST_CASE` sections are uncommented in both
-`assg-tests-int-template.cpp` and `assg-tests-string-template.cpp`.
+`test-int-template.cpp` and `test-string-template.cpp`.
 As the names hopefully suggest, the `int` tests are testing 
 `List<int>`, a list of `int` values, and the `string` tests are
 testing `List<string>` list containers.  While the second
@@ -641,8 +636,8 @@ Once you are done with that, you should be able to now pass all of the tests
 with all of them now uncommented.  If you want, you can now delete the
 `template` subdirectory.  And you can delete the files
 `List-notemplate.[hpp|cpp]` as well as the original 
-`assg-tests.cpp` file, none of these are used any longer in
-your templatized version of the `List<T>` class.  
+`test-List.cpp` file, none of these are used any longer in
+your templatized version of the `List<T>` class.
 
 You should have done these changes in a new branch called `template`,
 as stated in step 1.  Once you are satisfied, commit your changes to

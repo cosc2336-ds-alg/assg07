@@ -2,7 +2,6 @@
  * @brief Declarations of List class for Assignment Overloading and Templates
  *
  * @author Jane Programmer
- * @note   cwid : 123 45 678
  * @note   class: COSC 2336, Summer 2021
  * @note   ide  : VSCode Server 3.9.3, Gnu Development Tools
  * @note   assg : Assignment Overloading and Templates
@@ -18,7 +17,6 @@
 #include <string>
 using namespace std;
 
-
 /** @class List
  * @brief A basic List of integer values for the assignment.
  *
@@ -28,9 +26,24 @@ using namespace std;
  * Notice the overloaded operator[].  We will talk more about operator
  * overloading in the next unit or two.
  */
-template <class T>
+template<class T>
 class List
 {
+public:
+  // constructors and destructors
+  List();                     // default constructor
+  List(int size, T values[]); // standard constructor
+  List(const List<T>& list);  // copy constructor
+  ~List();                    // destructor
+
+  // accessor methods
+
+  // overloaded operators
+
+  // friend functions / operators
+  template<typename U>
+  friend ostream& operator<<(ostream& out, const List<U>& rhs);
+
 private:
   /// @brief private constant, initial allocation size for empty lists
   ///   to grow to
@@ -46,23 +59,8 @@ private:
   T* values;
 
   // private member methods for managing the List internally
-  
-public:
-  // constructors and destructors
-  List();                       // default constructor
-  List(int size, T values[]);   // standard constructor
-  List(const List<T>& list);    // copy constructor
-  ~List();                      // destructor
 
-  // accessor methods 
-
-  // overloaded operators
-
-  // friend functions / operators
-  template <typename U>
-  friend ostream& operator<<(ostream& out, const List<U>& rhs);
 };
-
 
 /** @class ListMemoryBoundsException
  * @brief Memory Bounds Exception for the List class.
@@ -83,4 +81,4 @@ private:
   string message;
 };
 
-#endif  // define _LIST_HPP_
+#endif // define _LIST_HPP_

@@ -29,23 +29,6 @@ using namespace std;
  */
 class List
 {
-private:
-  /// @brief private constant, initial allocation size for empty lists
-  ///   to grow to
-  const int INITIAL_ALLOCATION_SIZE = 10;
-
-  /// @brief the current size of the list of integer values
-  int size;
-  /// @brief the current amount of allocated memory being
-  ///   managed by/for this list of values
-  int allocationSize;
-  /// @brief the integers values contained in the list.  This will
-  ///   be a dynamically allocated array of integers.
-  int* values;
-
-  // private member methods for managing the List internally
-  void growListIfNeeded();
-
 public:
   // constructors and destructors
   List();                       // default constructor
@@ -62,6 +45,23 @@ public:
   int& operator[](int index);
   bool operator==(const List& rhs) const;
   friend ostream& operator<<(ostream& out, const List& rhs);
+
+private:
+  /// @brief private constant, initial allocation size for empty lists
+  ///   to grow to
+  const int INITIAL_ALLOCATION_SIZE = 10;
+
+  /// @brief the current size of the list of integer values
+  int size;
+  /// @brief the current amount of allocated memory being
+  ///   managed by/for this list of values
+  int allocationSize;
+  /// @brief the integers values contained in the list.  This will
+  ///   be a dynamically allocated array of integers.
+  int* values;
+
+  // private member methods for managing the List internally
+  void growListIfNeeded();
 };
 
 /** @class ListMemoryBoundsException

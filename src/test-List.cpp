@@ -1,4 +1,5 @@
-/** @file assg-tests.cpp
+/** @file test-List.cpp
+ *
  * @brief Unit tests for Assignment Overloading and Templates
  *
  * @author Derek Harter
@@ -173,11 +174,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
 /** Task 1: implement append() member function operation for List class
  */
 /*
-   TEST_CASE("List<int>::<append member function tests",
-          "[task1]")
-   {
-   SECTION("grow an initially empty list")
-   {
+TEST_CASE("List<int>::<append member function tests", "[task1]")
+{
+  SECTION("grow an initially empty list")
+  {
     List l1;
 
     l1.append(5);
@@ -186,10 +186,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getAllocationSize() == 10);
     CHECK(l1[0] == 5);
     CHECK(l1.str() == "<list> size: 1 allocationSize: 10 [ 5 ]");
-   }
+  }
 
-   SECTION("keep growing list of values")
-   {
+  SECTION("keep growing list of values")
+  {
     List l1;
 
     l1.append(5);
@@ -214,10 +214,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 6);
     CHECK(l1.getAllocationSize() == 10);
     CHECK(l1.str() == "<list> size: 6 allocationSize: 10 [ 5, 7, 9, 11, 13, 15 ]");
-   }
+  }
 
-   SECTION("test doubling of initially empty list")
-   {
+  SECTION("test doubling of initially empty list")
+  {
     List l1;
 
     l1.append(5);
@@ -251,10 +251,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 14);
     CHECK(l1.getAllocationSize() == 20);
     CHECK(l1.str() == "<list> size: 14 allocationSize: 20 [ 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31 ]");
-   }
+  }
 
-   SECTION("test appending to non-empty constructed list")
-   {
+  SECTION("test appending to non-empty constructed list")
+  {
     int l1Values[] = {13, 17};
     List l1(2, l1Values);
 
@@ -294,10 +294,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 10);
     CHECK(l1.getAllocationSize() == 16);
     CHECK(l1.str() == "<list> size: 10 allocationSize: 16 [ 13, 17, 19, 23, 29, 31, 37, 43, 47, 51 ]");
-   }
+  }
 
-   SECTION("test returns reference for chaining of method invocations")
-   {
+  SECTION("test returns reference for chaining of method invocations")
+  {
     List l1;
 
     l1.append(5).append(7).append(9).append(11).append(13).append(15);
@@ -313,18 +313,17 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 14);
     CHECK(l1.getAllocationSize() == 20);
     CHECK(l1.str() == "<list> size: 14 allocationSize: 20 [ 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31 ]");
-   }
-   }
- */
+  }
+}
+*/
 
 /** Task 1: overload operator>>() operation for append for List class
  */
 /*
-   TEST_CASE("List<int>::operator>> overloaded operator tests",
-          "[task1]")
-   {
-   SECTION("grow an initially empty list")
-   {
+TEST_CASE("List<int>::operator>> overloaded operator tests", "[task1]")
+{
+  SECTION("grow an initially empty list")
+  {
     List l1;
 
     l1 >> 5;
@@ -333,10 +332,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getAllocationSize() == 10);
     CHECK(l1[0] == 5);
     CHECK(l1.str() == "<list> size: 1 allocationSize: 10 [ 5 ]");
-   }
+  }
 
-   SECTION("keep growing list of values")
-   {
+  SECTION("keep growing list of values")
+  {
     List l1;
 
     l1 >> 5;
@@ -361,10 +360,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 6);
     CHECK(l1.getAllocationSize() == 10);
     CHECK(l1.str() == "<list> size: 6 allocationSize: 10 [ 5, 7, 9, 11, 13, 15 ]");
-   }
+  }
 
-   SECTION("test doubling of initially empty list")
-   {
+  SECTION("test doubling of initially empty list")
+  {
     List l1;
 
     l1 >> 5;
@@ -398,10 +397,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 14);
     CHECK(l1.getAllocationSize() == 20);
     CHECK(l1.str() == "<list> size: 14 allocationSize: 20 [ 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31 ]");
-   }
+  }
 
-   SECTION("test appending to non-empty constructed list")
-   {
+  SECTION("test appending to non-empty constructed list")
+  {
     int l1Values[] = {13, 17};
     List l1(2, l1Values);
 
@@ -441,10 +440,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 10);
     CHECK(l1.getAllocationSize() == 16);
     CHECK(l1.str() == "<list> size: 10 allocationSize: 16 [ 13, 17, 19, 23, 29, 31, 37, 43, 47, 51 ]");
-   }
+  }
 
-   SECTION("test returns reference for chaining of method invocations")
-   {
+  SECTION("test returns reference for chaining of method invocations")
+  {
     List l1;
 
     l1 >> 5 >> 7 >> 9 >> 11 >> 13 >> 15;
@@ -460,18 +459,17 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 14);
     CHECK(l1.getAllocationSize() == 20);
     CHECK(l1.str() == "<list> size: 14 allocationSize: 20 [ 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31 ]");
-   }
-   }
- */
+  }
+}
+*/
 
 /** Task 2: implement prepend() member function operation for List class
  */
 /*
-   TEST_CASE("List<int>::prepend member function tests",
-          "[task2]")
-   {
-   SECTION("grow an initially empty list")
-   {
+TEST_CASE("List<int>::prepend member function tests", "[task2]")
+{
+  SECTION("grow an initially empty list")
+  {
     List l1;
 
     l1.prepend(5);
@@ -480,10 +478,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getAllocationSize() == 10);
     CHECK(l1[0] == 5);
     CHECK(l1.str() == "<list> size: 1 allocationSize: 10 [ 5 ]");
-   }
+  }
 
-   SECTION("keep prepending and growing list of values")
-   {
+  SECTION("keep prepending and growing list of values")
+  {
     List l1;
 
     l1.prepend(5);
@@ -508,10 +506,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 6);
     CHECK(l1.getAllocationSize() == 10);
     CHECK(l1.str() == "<list> size: 6 allocationSize: 10 [ 15, 13, 11, 9, 7, 5 ]");
-   }
+  }
 
-   SECTION("test doubling of initially empty list")
-   {
+  SECTION("test doubling of initially empty list")
+  {
     List l1;
 
     l1.prepend(5);
@@ -545,10 +543,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 14);
     CHECK(l1.getAllocationSize() == 20);
     CHECK(l1.str() == "<list> size: 14 allocationSize: 20 [ 31, 29, 27, 25, 23, 21, 19, 17, 15, 13, 11, 9, 7, 5 ]");
-   }
+  }
 
-   SECTION("test prepending to non-empty constructed list")
-   {
+  SECTION("test prepending to non-empty constructed list")
+  {
     int l1Values[] = {13, 17};
     List l1(2, l1Values);
 
@@ -588,10 +586,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 10);
     CHECK(l1.getAllocationSize() == 16);
     CHECK(l1.str() == "<list> size: 10 allocationSize: 16 [ 51, 47, 43, 37, 31, 29, 23, 19, 13, 17 ]");
-   }
+  }
 
-   SECTION("test returns reference for chaining of method invocations")
-   {
+  SECTION("test returns reference for chaining of method invocations")
+  {
     List l1;
 
     l1.prepend(5).prepend(7).prepend(9).prepend(11).prepend(13).prepend(15);
@@ -607,18 +605,17 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 14);
     CHECK(l1.getAllocationSize() == 20);
     CHECK(l1.str() == "<list> size: 14 allocationSize: 20 [ 31, 29, 27, 25, 23, 21, 19, 17, 15, 13, 11, 9, 7, 5 ]");
-   }
-   }
- */
+  }
+}
+*/
 
 /** Task 2: overload operator<<() operation for List class prepending
  */
 /*
-   TEST_CASE("List<int>::operator<< overloaded operator prepend tests",
-          "[task2]")
-   {
-   SECTION("grow an initially empty list")
-   {
+TEST_CASE("List<int>::operator<< overloaded operator prepend tests", "[task2]")
+{
+  SECTION("grow an initially empty list")
+  {
     List l1;
 
     l1 << 5;
@@ -627,10 +624,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getAllocationSize() == 10);
     CHECK(l1[0] == 5);
     CHECK(l1.str() == "<list> size: 1 allocationSize: 10 [ 5 ]");
-   }
+  }
 
-   SECTION("keep prepending and growing list of values")
-   {
+  SECTION("keep prepending and growing list of values")
+  {
     List l1;
 
     l1 << 5;
@@ -655,10 +652,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 6);
     CHECK(l1.getAllocationSize() == 10);
     CHECK(l1.str() == "<list> size: 6 allocationSize: 10 [ 15, 13, 11, 9, 7, 5 ]");
-   }
+  }
 
-   SECTION("test doubling of initially empty list")
-   {
+  SECTION("test doubling of initially empty list")
+  {
     List l1;
 
     l1 << 5;
@@ -692,10 +689,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 14);
     CHECK(l1.getAllocationSize() == 20);
     CHECK(l1.str() == "<list> size: 14 allocationSize: 20 [ 31, 29, 27, 25, 23, 21, 19, 17, 15, 13, 11, 9, 7, 5 ]");
-   }
+  }
 
-   SECTION("test prepending to non-empty constructed list")
-   {
+  SECTION("test prepending to non-empty constructed list")
+  {
     int l1Values[] = {13, 17};
     List l1(2, l1Values);
 
@@ -735,10 +732,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 10);
     CHECK(l1.getAllocationSize() == 16);
     CHECK(l1.str() == "<list> size: 10 allocationSize: 16 [ 51, 47, 43, 37, 31, 29, 23, 19, 13, 17 ]");
-   }
+  }
 
-   SECTION("test returns reference for chaining of method invocations")
-   {
+  SECTION("test returns reference for chaining of method invocations")
+  {
     List l1;
 
     l1 << 5 << 7 << 9 << 11 << 13 << 15;
@@ -754,19 +751,18 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l1.getSize() == 14);
     CHECK(l1.getAllocationSize() == 20);
     CHECK(l1.str() == "<list> size: 14 allocationSize: 20 [ 31, 29, 27, 25, 23, 21, 19, 17, 15, 13, 11, 9, 7, 5 ]");
-   }
-   }
- */
+  }
+}
+*/
 
 /** Task 3: implement concatenate() member function to concatenate
  *    two lists into a new list.
  */
 /*
-   TEST_CASE("List<int>::concatenate concatenate member function tests",
-          "[task3]")
-   {
-   SECTION("concatenation of two empty lists should result in an empty list.")
-   {
+TEST_CASE("List<int>::concatenate concatenate member function tests", "[task3]")
+{
+  SECTION("concatenation of two empty lists should result in an empty list.")
+  {
     List l1;
     List l2;
     List l3 = l1.concatenate(l2);
@@ -779,10 +775,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
 
     CHECK(l3.getSize() == 0);
     CHECK(l3.getAllocationSize() == 0);
-   }
+  }
 
-   SECTION("concatenation of list of 1 item with empty list")
-   {
+  SECTION("concatenation of list of 1 item with empty list")
+  {
     List l1;
     List l2;
     l1 >> 1;
@@ -798,10 +794,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l3.getSize() == 1);
     CHECK(l3.getAllocationSize() == 1);
     CHECK(l3.str() == "<list> size: 1 allocationSize: 1 [ 1 ]");
-   }
+  }
 
-   SECTION("concatenation of empty list with list of 1 item")
-   {
+  SECTION("concatenation of empty list with list of 1 item")
+  {
     List l1;
     List l2;
     l2 >> 1;
@@ -817,10 +813,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l3.getSize() == 1);
     CHECK(l3.getAllocationSize() == 1);
     CHECK(l3.str() == "<list> size: 1 allocationSize: 1 [ 1 ]");
-   }
+  }
 
-   SECTION("concatenation of two lists of size 1")
-   {
+  SECTION("concatenation of two lists of size 1")
+  {
     List l1;
     List l2;
     l1 >> 1;
@@ -857,10 +853,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     // l3 and l4 are different Lists, they should not be pointing to same
     // result after second concatenate
     CHECK_FALSE(l3 == l4);
-   }
+  }
 
-   SECTION("concatenation of two list with a couple of values, one list is full")
-   {
+  SECTION("concatenation of two list with a couple of values, one list is full")
+  {
     List l1;
     List l2;
     l1 >> 1 << 3 >> 5 << 7 >> 9 << 11 >> 13;
@@ -897,18 +893,17 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     // l3 and l4 are different Lists, they should not be pointing to same
     // result after second concatenate
     CHECK_FALSE(l3 == l4);
-   }
-   }
- */
+  }
+}
+*/
 
 /** Task 3: implement operator+ overloaded concatenate operator
  */
 /*
-   TEST_CASE("List<int>::operator+ overloaded concatenate operator tests",
-          "[task3]")
-   {
-   SECTION("concatenation of two empty lists should result in an empty list.")
-   {
+TEST_CASE("List<int>::operator+ overloaded concatenate operator tests", "[task3]")
+{
+  SECTION("concatenation of two empty lists should result in an empty list.")
+  {
     List l1;
     List l2;
     List l3 = l1 + l2;
@@ -921,10 +916,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
 
     CHECK(l3.getSize() == 0);
     CHECK(l3.getAllocationSize() == 0);
-   }
+  }
 
-   SECTION("concatenation of list of 1 item with empty list")
-   {
+  SECTION("concatenation of list of 1 item with empty list")
+  {
     List l1;
     List l2;
     l1 >> 1;
@@ -940,10 +935,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l3.getSize() == 1);
     CHECK(l3.getAllocationSize() == 1);
     CHECK(l3.str() == "<list> size: 1 allocationSize: 1 [ 1 ]");
-   }
+  }
 
-   SECTION("concatenation of empty list with list of 1 item")
-   {
+  SECTION("concatenation of empty list with list of 1 item")
+  {
     List l1;
     List l2;
     l2 >> 1;
@@ -959,10 +954,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     CHECK(l3.getSize() == 1);
     CHECK(l3.getAllocationSize() == 1);
     CHECK(l3.str() == "<list> size: 1 allocationSize: 1 [ 1 ]");
-   }
+  }
 
-   SECTION("concatenation of two lists of size 1")
-   {
+  SECTION("concatenation of two lists of size 1")
+  {
     List l1;
     List l2;
     l1 >> 1;
@@ -999,10 +994,10 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     // l3 and l4 are different Lists, they should not be pointing to same
     // result after second concatenate
     CHECK_FALSE(l3 == l4);
-   }
+  }
 
-   SECTION("concatenation of two list with a couple of values, one list is full")
-   {
+  SECTION("concatenation of two list with a couple of values, one list is full")
+  {
     List l1;
     List l2;
     l1 >> 1 << 3 >> 5 << 7 >> 9 << 11 >> 13;
@@ -1039,6 +1034,6 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
     // l3 and l4 are different Lists, they should not be pointing to same
     // result after second concatenate
     CHECK_FALSE(l3 == l4);
-   }
-   }
- */
+  }
+}
+*/

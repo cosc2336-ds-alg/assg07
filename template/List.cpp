@@ -3,7 +3,6 @@
  *   of ints class for the Assignment Overloading and Templates
  *
  * @author Jane Programmer
- * @note   cwid : 123 45 678
  * @note   class: COSC 2336, Summer 2021
  * @note   ide  : VSCode Server 3.9.3, Gnu Development Tools
  * @note   assg : Assignment Overloading and Templates
@@ -13,18 +12,18 @@
  * of some of the data structures and abstract data types we
  * will be learning to build and understand.
  */
+#include "List.hpp"
 #include <iostream>
 #include <sstream>
 #include <string>
-#include "List.hpp"
 using namespace std;
 
-
-/** default constructor
+/** @brief  Default constructor
+ *
  * Construct an empty list.  The empty list will have no allocated memory
  * nor any values.
  */
-template <class T>
+template<class T>
 List<T>::List()
 {
   // Empty list has no values nor any allocated memory
@@ -34,8 +33,8 @@ List<T>::List()
   values = nullptr;
 }
 
-
-/** standard constructor
+/** @brief Standard constructor
+ *
  * Construct a list of integer values from a (statically) defined and
  * provided array of integers.  We simply allocate a block of memory
  * dynamically large enough to hold the values, then copy the values
@@ -46,7 +45,7 @@ List<T>::List()
  * @param values The (static) array of string values to use to construct
  *   this List values with.
  */
-template <class T>
+template<class T>
 List<T>::List(int size, T values[])
 {
   // dynamically allocate a block of memory on the heap large enough to copy
@@ -62,8 +61,8 @@ List<T>::List(int size, T values[])
   }
 }
 
-
-/** copy constructor
+/** @brief Copy constructor
+ *
  * Provide a copy constructor for the List class.  A copy constructor
  * will be invoked whenver you assign one instance of a List to another.
  * For example
@@ -75,7 +74,7 @@ List<T>::List(int size, T values[])
  * @param list The other List type we are to make a copy of in this
  *   constructor.
  */
-template <class T>
+template<class T>
 List<T>::List(const List<T>& list)
 {
   // copy the size of the existing list and allocate memory to hold
@@ -91,13 +90,13 @@ List<T>::List(const List<T>& list)
   }
 }
 
-
-/** destructor
+/** @brief Class destructor
+ *
  * Destructor for the List class.  A List may (or may not) have
  * a dynamically allocated block of memory associated with it.
  * Free up this block on destruction of a List instance.
  */
-template <class T>
+template<class T>
 List<T>::~List()
 {
   // if values is not null, it points to a dynamic block of memory, so
@@ -108,9 +107,7 @@ List<T>::~List()
   }
 }
 
-
-/** List output operator
- *@brief overload output stream operator for List type.
+/** @brief overload output stream operator for List type.
  *
  * Overload the output stream operator so that we can display current
  * values of a List on standard output.
@@ -124,19 +121,17 @@ List<T>::~List()
  *   output stream, but after we  have inserted current List
  *   values / representation onto the stream
  */
-template <typename U>
+template<typename U>
 ostream& operator<<(ostream& out, const List<U>& rhs)
 {
   // reuse List str() method to stream to output stream
-  //out << rhs.str(); // uncomment this after templatizing str() if want output operator for List
+  // out << rhs.str(); // uncomment this after templatizing str() if want output operator for List
 
   // return the modified output stream as our result
   return out;
 }
 
-
-/**
- * @brief ListMemoryBoundsException constructor
+/** @brief Memory bounds exception constructor
  *
  * Constructor for exceptions used for our
  * List  class.
@@ -148,20 +143,14 @@ ListMemoryBoundsException::ListMemoryBoundsException(const string& message)
   this->message = message;
 }
 
-
-/**
- * @brief ListMemoryBoundsException destructor
+/** @brief Memory bounds exception destructor
  *
  * Destructor for exceptions used for our ListMemoryBoundsException
  * class.
  */
-ListMemoryBoundsException::~ListMemoryBoundsException()
-{
-}
+ListMemoryBoundsException::~ListMemoryBoundsException() {}
 
-
-/**
- * @brief ListMemoryBoundsException message
+/** @brief Memory bounds exception message
  *
  * Accessor method to access/return message given when an exception occurs.
  *
@@ -174,8 +163,6 @@ const char* ListMemoryBoundsException::what() const throw()
   return message.c_str();
 }
 
-
-
 /**
  * @brief Cause specific instance compilations
  *
@@ -187,8 +174,8 @@ const char* ListMemoryBoundsException::what() const throw()
  * https://isocpp.org/wiki/faq/templates#templates-defn-vs-decl
  * https://isocpp.org/wiki/faq/templates#separate-template-class-defn-from-decl
  */
-template ostream& operator<< <int>(ostream&, const List<int>&);
+template ostream& operator<<<int>(ostream&, const List<int>&);
 template class List<int>;
 
-template ostream& operator<< <string>(ostream&, const List<string>&);
+template ostream& operator<<<string>(ostream&, const List<string>&);
 template class List<string>;
