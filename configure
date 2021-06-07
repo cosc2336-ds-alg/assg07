@@ -40,7 +40,8 @@ then
     echo "Link base .vscode configuration to this project so will be used by VSCode IDE"
     echo "-----------------------------------------------------------------------------"
     echo ""
-    ln -s ../${BASE_NAME}/.vscode .vscode
+    #ln -s ../${BASE_NAME}/.vscode .vscode
+    cp -r ../${BASE_NAME}/.vscode .vscode
 fi
 
 # link the clang-format formatter config files so will be used
@@ -51,7 +52,8 @@ then
     echo "Link base clang-format configuration to this project so will be used by VSCode IDE"
     echo "----------------------------------------------------------------------------------"
     echo ""
-    ln -s ../${BASE_NAME}/config/clang-format.cfg .clang-format
+    #ln -s ../${BASE_NAME}/config/clang-format.cfg .clang-format
+    cp ../${BASE_NAME}/config/clang-format.cfg .clang-format
 fi
 
 # make sure the project build uses the version we set up here
