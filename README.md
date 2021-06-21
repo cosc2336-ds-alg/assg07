@@ -37,7 +37,7 @@ example, you have been using the overloaded `operator[]` a lot which
 defined an indexing operator into our user defined `List` data type.
 This week you will continue adding onto the `List` data type some
 other operators that will allow us to append and prepend items on
-lists, and concatentate lists together to make other lists.
+lists, and concatenate lists together to make other lists.
 
 In addition another goal of this assignment is to get some experience
 with defining class templates.  Class templates are used extensively
@@ -438,7 +438,7 @@ all of the previous tasks committed and their tests passing through
 task 3.
 
 Once the tasks 1-3 are passing the GitHub actions/tests, and you have
-all of the work recorded and pused as commits into the `Feedback`
+all of the work recorded and pushed as commits into the `Feedback`
 pull request, then you can turn your attention to working on task 4.
 We are going to put all work to templatize the function into a new
 branch.  We would like to start this branch back before you started adding
@@ -549,7 +549,7 @@ all work and commits while templatizing the `List` class.
 After committing and pushing, you should examine how the `List` class
 has been turned into a template class.  In the `List.hpp` file, there
 are just a few subtle changes.  The declaration of the `List` class is
-now preceeded by the template specifier keyword:
+now preceded by the template specifier keyword:
 
 ```c++
 template <class T>
@@ -732,7 +732,7 @@ push your changes to your repository.  Hopefully you will now be able
 to pass all of the GitHub test actions.  The `Template` pull request
 you created should show all of the commits you made to templatize your
 `List` class.  We will not be merging this pull request back to the
-`main` branch.  We want to leave it open to keep separate branchs of
+`main` branch.  We want to leave it open to keep separate branches of
 development possible for the nontemplate and templatized versions of
 this code.
 
@@ -749,10 +749,10 @@ building and able to run the tests.  You may loose points for pushing
 a broken build, especially if the last build you submit is not
 properly compiling and running the tests.
 
-In this problem, up to 40 points will be given for having at least 1
+In this problem, up to 20 points will be given for having at least 1
 commit that compiles and runs the tests (and at least some attempt was
-made to work on the first task).  Thereafter 10 points are awarded for
-completing each of the 6 tasks.  However you should note that the
+made to work on the first task).  Thereafter 20 points are awarded for
+completing each of the 4 tasks.  However you should note that the
 autograder awards either all point for passing all tests, or no points
 if any test is failing for one of the tasks.  Also note that even if
 you pass all tests, when the instructor evaluates your assignment,
