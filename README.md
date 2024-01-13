@@ -1,7 +1,7 @@
 ---
 title: 'Assignment Operator Overloading and Class Templates: Overloading C++ syntactic operators and class templates for user defined data types'
 author: 'COSC 2336: Data Structures and Algorithms'
-date: 'Summer 2021'
+date: 'Spring 2024'
 ---
 
 
@@ -71,7 +71,7 @@ using and adding code to for this assignment.
 
 | File Name            | Description                                                                                         |
 |----------------------|-----------------------------------------------------------------------------------------------------|
-| `src/test-List.cpp`  | Unit tests for the overloaded operators you are to implement.                                       |
+| `src/assg07-tests.cpp`  | Unit tests for the overloaded operators you are to implement.                                       |
 | `include/List.hpp`   | Header file for the declarations of the `List` class you will be modifying and its defined API.     |
 | `src/List.cpp`       | Implementation file for the `List` member functions that implement the API and class functionality. |
 
@@ -86,8 +86,8 @@ you have completed the following setup steps.
    assignment invitation link for 'Assignment Recursion' for our
    current class semester and section.
 2. Clone the repository using the SSH URL to your local class DevBox
-   development environment.
-3. Configure the project by running the `configure` script from a terminal.
+   development environment. Make sure to open the cloned
+   folder and restart inside of the correct Dev Container.
 4. Confirm that the project builds and runs, though no tests will be
    defined or run initially.  If the project does not build on the first
    checkout, please inform the instructor.
@@ -492,7 +492,7 @@ the code you added, you will see it is now gone.  This is because you have
 moved back in time in your commit history, and you should be at the place
 just before you started doing your work.  This is what we want.  We want to
 branch off from this point in time and add the code again, but this
-time first turing the class into a template class.  As the message indicated
+time first turning the class into a template class.  As the message indicated
 from the checkout, we should create and switch to the new branch we want
 to begin work on.  So again from the terminal, do as it says and create
 a template branch:

@@ -3,7 +3,8 @@
 *.exe
 *.tar.gz
 *.log
-debug
+*.out
+sim
 test
 \#*
 .\#*
@@ -12,6 +13,4 @@ Makefile.pandoc
 .vagrant/*
 html/*
 latex/*
-.vscode/*
-.vscode
-.clang-format
+output/*

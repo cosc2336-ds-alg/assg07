@@ -2,7 +2,7 @@
   "tests": [
     {
       "name": "test successfully builds",
-      "setup": "./configure",
+      "setup": "make clean",
       "run": "make",
       "input": "",
       "output": "",
@@ -18,7 +18,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 10,
-      "points": 10
+      "points": 15
     },
     {
       "name": "task 1 append() operation",
@@ -28,7 +28,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 10,
-      "points": 20
+      "points": 25
     },
     {
       "name": "task 2 prepend() operation",
@@ -48,7 +48,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 10,
-      "points": 20
+      "points": 15
     },
     {
       "name": "task 4 List template class",
@@ -58,7 +58,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 10,
-      "points": 20
+      "points": 15
     }
   ]
 }
