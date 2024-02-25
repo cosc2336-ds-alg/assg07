@@ -48,7 +48,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 10,
-      "points": 15
+      "points": 20
     },
     {
       "name": "task 4 List template class",
@@ -58,7 +58,7 @@
       "output": "",
       "comparison": "included",
       "timeout": 10,
-      "points": 15
+      "points": 10
     }
   ]
 }

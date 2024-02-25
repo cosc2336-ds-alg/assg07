@@ -17,5 +17,7 @@ This method is slightly more complicated than `append()` because you have an add
 
 **Additional Requirements**
 
-- Your `append()` member function must correctly return a reference to `this` item, so that it can be used to chain together appen operations in expressions correctly.
+- Your `prepend()` member method must return a reference to a list, e.g. a `List&` as its result.
+- Your `prepend()` member function must correctly return a reference to `this` item, so that it can be used to chain together appen operations in expressions correctly.
+- Your overloaded `operator<<()` must have the same signature as the `prepend()` function.  And your `operator<<()` must be implemented by simply calling and reusing the `prepend()` method.
 - You are required to correctly manage and update memory allocation to hold the list.  You are required to use the existing `growListIfNeeded()` private member function to do this.

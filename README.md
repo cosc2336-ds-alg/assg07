@@ -26,42 +26,40 @@ date: 'Spring 2024'
 We have two related but separate goals in this assignment.  First of
 all in this assignment we will be emphasizing the idea that defining a
 class is like adding a new user defined data type to the C++ language.
-One way this can be incredibly powerful is when we define operator so
+One way this can be incredibly powerful is when we define operators so
 that user defined classes can be used in similar ways as built in data
-types.  This gives ways of much more naturally and expressively being
-able to work with classes you define to use in your code, as hopefully
-you will better understand by doing this assignment.  We have actually
-already seen some examples of operator overloading in previous
-assignments, before we talked about it in this weeks unit.  For
-example, you have been using the overloaded `operator[]` a lot which
-defined an indexing operator into our user defined `List` data type.
-This week you will continue adding onto the `List` data type some
-other operators that will allow us to append and prepend items on
-lists, and concatenate lists together to make other lists.
+types.  This allows for our user defined classes to be used in ways
+that are much more naturally expressive. We have actually already seen
+some examples of operator overloading in previous assignments, before
+we talked about it in this weeks unit.  For example, you have been
+using the overloaded `operator[]` a lot which defined an indexing
+operator into our user defined `List` data type.  This week you will
+continue adding onto the `List` data type some other operators that
+will allow us to append and prepend items on lists, and concatenate
+lists together to make other lists.
 
 In addition another goal of this assignment is to get some experience
 with defining class templates.  Class templates are used extensively
 by C++ (see the Standard Template Library or STL) to provide generic
 container data types.  For example, in previous assignments you have
 been given a `List` user defined class that initially held lists of
-`int` integer values.  This was kind of boring, so we switched it up a
-bit and defined basically the same `List` but one that held and
-managed lists of `string` values.  It is very common to want to have
-powerful data types that can hold and manage different types of
-values, floats, ints, strings, even other user defined data types.  So
-far, the only solution you would have if you wanted to have our `List`
-that could sometime manage lists of `int` values, and have some others
-to manage lists of `string` values, would be to define two mostly
-identical classes with different names, say `ListInt` and `ListString`
-to hold lists of integers and lists of strings respectively.  Class
-templates allow us to parameterize the type of data being held in a
-container, so that we can define the operations of the container
-separate from the type of data we want to be able to put into and
-manage with the container.
+`int` integer values.  This was kind of boring, so we switched it up
+and defined the same `List` but one that held and managed lists of
+`string` values for our sorting and searching assignment.  It is very
+common to want to have powerful data types that can hold and manage
+different types of values, floats, ints, strings, even other user
+defined data types.  So far, the only solution if you wanted to have a
+`List` that could hold `int` values, and have another to manage lists
+of `string` values, would be to define two mostly identical classes
+with different names, say `ListInt` and `ListString` that hold lists
+of integers and strings respectively.  Class templates allow us to
+parameterize the type of data being held in a container, so that we
+can define the operations of the container separate from the type of
+data we want to be able to put into and manage with the container.
 
-So in this assignment, you will start again with the `List` of strings
+So in this assignment, you will start again with the `List` of ints
 container, and add some additional overloaded operators to it.  Then
-we will attempt to 'templatize' your `List` class, so that you can use
+you will attempt to 'templatize' your `List` class, so that you can use
 it to hold and manage lists of any desired data type.
 
 # Overview and Setup
@@ -69,11 +67,11 @@ it to hold and manage lists of any desired data type.
 For this assignment you will be given the following files that you will be
 using and adding code to for this assignment.
 
-| File Name            | Description                                                                                         |
-|----------------------|-----------------------------------------------------------------------------------------------------|
-| `src/assg07-tests.cpp`  | Unit tests for the overloaded operators you are to implement.                                       |
-| `include/List.hpp`   | Header file for the declarations of the `List` class you will be modifying and its defined API.     |
-| `src/List.cpp`       | Implementation file for the `List` member functions that implement the API and class functionality. |
+| File Name              | Description                                                                                         |
+|------------------------|-----------------------------------------------------------------------------------------------------|
+| `src/assg07-tests.cpp` | Unit tests for the overloaded operators you are to implement.                                       |
+| `include/List.hpp`     | Header file for the declarations of the `List` class you will be modifying and its defined API.     |
+| `src/List.cpp`         | Implementation file for the `List` member functions that implement the API and class functionality. |
 
 This week you will be adding in several new member functions to the
 `List` class.  So all of your work will be to add in code into the
@@ -83,14 +81,15 @@ As usual, before starting on the assignment tasks proper, you should make sure
 you have completed the following setup steps.
 
 1. Copy the assignment repository on GitHub using the provided
-   assignment invitation link for 'Assignment Recursion' for our
-   current class semester and section.
+   assignment invitation link for 'Assignment Operator Overloading and
+   Class Templates' for our current class semester and section.
 2. Clone the repository using the SSH URL to your local class DevBox
    development environment. Make sure to open the cloned
    folder and restart inside of the correct Dev Container.
-4. Confirm that the project builds and runs, though no tests will be
-   defined or run initially.  If the project does not build on the first
-   checkout, please inform the instructor.
+4. Confirm that the project builds and runs, and that the initial unit tests
+   of the `List` class are passing.  If the project does not build on the first
+   checkout, please inform the instructor.  Confirm that the class style 
+   checker/formatter is being run when you save your code.
 5. You should create the issue for Task 1 and/or for all tasks for the assignment
    now before beginning the first task.  On your GitHub account, go to issues,
    and create it/them from the issue templates for the assignment.  Make sure that
@@ -125,14 +124,13 @@ comparisons that yield `true` / `false` results just like the
 built in data types like `int` or `float`.  If you wanted, you could
 add in other boolean comparison operators for the `List` class, like
 `<`, `>=`, etc.  Question: how would you define `<` for our `List`
-class?  We will not be adding in more boolean operators in this assignment,
-but doing something different.
+class? 
 
 Notice also the overloading of the `operator[]` which allows us to
 index `List` instances as if they were regular C/C++ arrays.
 This is powerful, as it allows us a way to look into our lists,
-iterate over them, and even modify our list contents.  But also notice,
-recall that this is powerful because it allows us to add in some bounds
+iterate over them, and even modify our list contents.  But also recall,
+this is powerful because it allows us to add in some bounds
 checking on index requests, so that we can throw an exception if someone
 tries and access a value beyond the end of our list, instead of causing
 memory corruption which is what will happen if you make bounds errors when
@@ -143,7 +141,7 @@ output stream operator is a bit different from the previous two operators.
 It is actually a `friend` function rather than a member function.
 There are technical reasons why this is necessary, which were discussed
 in some of this weeks learning materials.  Basically we need the
-instance of the class we want to send to send to the output stream
+instance of the class we want to send to the output stream
 on the right hand size of the output stream operator:
 
 ```c++
@@ -162,13 +160,13 @@ to be on the left hand side of the operator.
 Also before starting to implement this weeks assignment, note
 the new `growListIfNeeded()` private member function.
 This week we are enhancing the `List` to be able to dynamically
-grow and shrink, but being able to add and remove items from the
+grow and shrink by being able to add and remove items from the
 list.  Because of this requirement, the memory management of
 our list of `values` is a bit more complicated now.  We need to
 be able to grow the size of the dynamically allocated array
 of `values` if it is currently full.  This is where the new
 `growListIfNeeded()` function comes in.  There is also a
-new member variable named `allocationSize`.  
+new member variable named `allocationSize`.
 
 For this implementation of the `List` user defined type, the
 `size` of the list will not necessarily be the same as the amount
@@ -206,17 +204,16 @@ As usual make sure that you create Task 1 issue on GitHub and have
 linked the issue with the 'Feedback' Pull request in this assignment
 repository before beginning.
 
-For the first task you will implement the ability to append a
-new value onto the end of our `List` of values.  You will first
-do this by implementing a regular member function named
-`append()`.  This function takes an `int` value as input, which
-is the value to append to the end of the list.  This function
-should actually return a reference to a `List` as its result.
-You will not be creating a new `List` to return, but you will
-simply be returning a reference to the instance from
-the member function.  The reason for this will become apparent
-when you implement the overloaded operator.  To return
-a reference to this instance, simply do a 
+For the first task you will implement the ability to append a new
+value onto the end of our `List` of values.  You will first do this by
+implementing a regular member function named `append()` (`task1_1`
+subtask).  This function takes an `int` value as input, which is the
+value to append to the end of the list.  This function should actually
+return a reference to a `List` as its result.  You will not be
+creating a new `List` to return, but you will simply be returning a
+reference to the instance from the member function.  The reason for
+this will become apparent when you implement the overloaded operator.
+To return a reference to this instance, simply do a
 
 ```c++
    return *this;
@@ -239,19 +236,18 @@ operations.  If you call this function before attempting to add
 the item to the list of `values`, it will grow the list if
 needed, so that you have enough room to append on the new value.
 
-Once the `append()` member function is working, you should then
-add in an overloaded operator for the `List` class to allow
-appending of values to the list.  The next set of unit tests
-will test the overloading of the operator for appending values.
-We chose to reuse the `operator>>()` operator to denote appending
-values to the list.  The `>>` operator normally performs input
-stream operations in C/C++.  There is no real operator that means
-something like 'append' for the built in basic data types.  It is 
-not uncommon when doing operator overloading to do something like this,
-to re-purpose an existing syntactic operation to mean something useful
-for your own user defined data type.  Overloading this operator
-to mean appending a value allows us to write code like the
-following:
+Once the `append()` member function is working, you should then add in
+an overloaded operator for the `List` class to allow appending of
+values to the list (subtask `task1_2`).  The next set of unit tests
+will test the overloading of the operator for appending values.  We
+chose to reuse the `operator>>()` operator to denote appending values
+to the list.  The `>>` operator normally performs input stream
+operations in C/C++.  There is no real operator that means something
+like 'append' for the built in basic data types.  It is not uncommon
+when doing operator overloading to do something like this, to
+re-purpose an existing syntactic operation to mean something useful
+for your own user defined data type.  Overloading this operator to
+mean appending a value allows us to write code like the following:
 
 ```c++
 List l1;
@@ -307,16 +303,18 @@ a way to allow $\mathcal{O}(1)$ constant time performance to append
 and prepend items to the list.
 
 Besides the need to first shift all items up 1 index for the prepend
-to index 0, this task will end up being pretty similar to Task 1.
-You will first create a `prepend()` member function.  It will have
-the same signature as `append()` and will return the same reference
-to `this` List instance as its result.  Of course after checking if
-the list needs to grow, you first need to shift all items up by 1 index
-before putting the new value into index 0 of the `values` array.
+to index 0, this task will end up being pretty similar to Task 1.  You
+will first create a `prepend()` member function (subtask `task2_1`).
+It will have the same signature as `append()` and will return the same
+reference to `this` List instance as its result.  Of course after
+checking if the list needs to grow, you first need to shift all items
+up by 1 index before putting the new value into index 0 of the
+`values` array.
 
-Then likewise the `operator<<()` which we have chosen to overload for
-the prepend operation can be defined, and its implementation is simply
-to call the `prepend()` function you implemented first.
+Then likewise the `operator<<()` (subtask `task2_2`) which we have
+chosen to overload for the prepend operation can be defined, and its
+implementation is simply to call the `prepend()` function you
+implemented first.
 
 NOTE: it would probably syntactically make more sense to specify prepend as
 
@@ -366,7 +364,7 @@ We would like the result to be that `List` `l3` has the values
 two lists to create a new third list.  Also notice the above implies that
 `l1` and `l2` should not me modified as a result of this operation, 
 they are still both lists with 3 values after the concatenation.  This
-further implies that a new list needs to be dynamically created and returned
+further implies that a **new list** needs to be dynamically created and returned
 in the `operator+()` that holds the result of the concatenation.
 
 There are some subtle difficulties with memory management that we must
@@ -374,22 +372,22 @@ take into consideration here. We could try using, for example, the copy
 constructor and the append or prepend methods, but these approaches will end
 up being more difficult than they might at first seem.
 
-First of all, the above example indicates that your `concatenate()` function
-should take a `const` reference to another `List`.  This would be the
-right hand side `l2` list that is passed into your `concatenate()` function
-in the previous example.  Also we said that `l1` should not be modified
-by doing the concatenate, so your `concatenate()` function should be declared
-as a `const` member function as well.  The function should return a reference
-to a new `List` that will need to be created dynamically.
+First of all, the above example indicates that your `concatenate()`
+function should take a `const` reference to another `List`.  This
+would be the right hand side `l2` list that is passed into your
+`concatenate()` function.  Also `l1` should not be modified by doing
+the concatenate, so your `concatenate()` function should be declared
+as a `const` member function as well.  The function should return a
+reference to a new `List` that will need to be created dynamically.
 
-So the approach you should use for `concatenate` is as follows.  
+So the approach you should use for `concatenate` is as follows:
 
 1. Start by allocating a new array of `int` values that is large
    enough to hold both `this` size plus the right hand side `size` values
-   once you concatenate them together.  Then
+   once you concatenate them together.
 2. Copy all of the values of `this` from its array of `values` to the beginning
    of this new array of values.
-3. Likewise copy all of the values from the right hand side list after these in the
+3. Likewise copy all of the values from the right hand side list after in the
    new array.
 4. Then it is important to dynamically create a new `List` of values that is initialized
    with this array of the concatenated values you just created.
@@ -399,14 +397,14 @@ So the approach you should use for `concatenate` is as follows.
    your function.
    
 For step 5, lets say you created an array of integers named `concatenatedValues`
-that has is of size `concatenatedSize`.  Then you would dynamically allocate a new
+that is of size `concatenatedSize`.  Then you would dynamically allocate a new
 list using the array based constructor, like
 
 ```c++
 List* concatenatedList = new List(concatenatedSize, concatenatedValues);
 ```
 
-The result as shown here, as always, is a pointer to the newly allocated List that is
+The result as shown here is a pointer to the newly allocated List that is
 now on the heap.  You can return this dynamically allocated reference by dereferencing
 the pointer
 
@@ -427,36 +425,37 @@ to the `Feedback` pull request of your repository.
 
 ## Task 4: Templatize `List` Class
 
-With task 4 we will be shifting gears and turn our attention to
-making your List class into a template class, so that we can
-manage lists of types other than `int` as we have now.
+With task 4 you will be shifting gears and turn your attention to
+making your List class into a template class, so that you can
+manage lists of types other than `int` as we have now.  This part
+of the assignments is worth a final 10 points.
 
-We will also be getting some practice using git and GitHub in this
-assignment, as we are going to perform the templatization of the
-`List` class in a new branch.  So don't start task 4 until you have
-all of the previous tasks committed and their tests passing through
-task 3.
+You will also be getting some practice using git and GitHub in this
+part of the assignment, as you are going to perform the templatization
+of the `List` class in a new git branch.  So don't start task 4 until
+you have all of the previous tasks committed and their tests passing
+through task 3.
 
 Once the tasks 1-3 are passing the GitHub actions/tests, and you have
 all of the work recorded and pushed as commits into the `Feedback`
 pull request, then you can turn your attention to working on task 4.
 We are going to put all work to templatize the function into a new
 branch.  We would like to start this branch back before you started adding
-in commits for the tasks 1-3.  We want to end up with the
+in commits for the tasks 1-3.  You want to end up with the
 non-template version of the code on the main and feedback branch of
-your repository, which are already created.  We want to create a new
+your repository, which are already created.  You want to create a new
 branch called `template` that branches from the initial commit
 of your repository, and records all of your commits to templatize
 the `List` class for task 4.
 
-You first need to checkout the commit in you DevBox that happened before
-your first commit for task 1.  Unfortunately it seems like VSCode has
-a bug that makes it difficult to checkout specific commits, a task
-that is easy to do from the git command line.  So you will need to
-open up a terminal and do something like the following:
+You first need to checkout the commit in you DevContainer in VSCode that
+happened before your first commit for task 1.  Unfortunately it seems
+like VSCode has a bug that makes it difficult to checkout specific
+commits, a task that is easy to do from the git command line.  So you
+will need to open up a terminal and do something like the following:
 
 ```
-$ vagrant@devbox:~/sync/assg/assg05-test-team$ git checkout 8e543b45
+vscode -> /workspaces/assg07 (main) $ git checkout 8e543b45
 Note: switching to '8e543b45'.
 
 You are in 'detached HEAD' state. You can look around, make experimental
@@ -478,14 +477,15 @@ HEAD is now at 8e543b4 Initial commit
 
 ```
 
-Notice that you should run this command from your assignment repository
-directory for this assignment.  Also notice you need to specify a funny
-looking number for the checkout command.  This is the git commit hash
-for the commit I wanted to checkout and switch to.  These hashes are
-really long, you only need to specify the first 8 digits or so if typing them
-in by hand.  But the git hash id you need will be different for you, you will
-need to look through the history of your commits and find the commit
-id that corresponds to the commit just before your first task 1 commit.
+Notice that you should run this command from your assignment
+repository directory for this assignment in your DevContainer.  Also
+notice you need to specify a funny looking number for the checkout
+command.  This is the git commit hash for the commit I wanted to
+checkout and switch to.  These hashes are really long, you only need
+to specify the first 8 digits or so if typing them in by hand.  But
+the git hash id you need will be different for you, you will need to
+look through the history of your commits and find the commit id that
+corresponds to the commit just before your first task 1 commit.
 
 Once you have checked out this commit, if you go back and look at 
 the code you added, you will see it is now gone.  This is because you have
@@ -498,8 +498,10 @@ to begin work on.  So again from the terminal, do as it says and create
 a template branch:
 
 ```
-vagrant@devbox:~/sync/assg/assg05-test-team$ git switch -c template
+vscode -> /workspaces/assg07 (main) $ git switch -c template
 Switched to a new branch 'template'
+
+vscode -> /workspaces/assg07 (template) $
 ```
 
 Once on the template branch, you will be able to add in new work, and stage,
@@ -516,16 +518,17 @@ in order to start templatizing your `List` class.  There is a
 subdirectory called `template` in your project that contains some
 files.  Copy the files named `test-int-template.cpp` and
 `test-string-template.cpp` to your `src` subdirectory.  These files
-will be replacing the old `tests-List.cpp` file that was testing the
+will be replacing the old `assg07-tests.cpp` file that was testing the
 nontemplatized version of `List` that only managed `int` values.
 There is also a new `Makefile` that will use these 2 tests files to
 build the test executable, copy this new Makefile from the `template`
 subdirectory and replace the current Makefile you have at the root of
 the directory.  You will also see there are files named `List.hpp` and
 `List.cpp` in the `template` subdirectory.  Copy these files to
-`include` and `src` respectively.  I have gotten you started on
-turning `List` into a template class, but have only templatized the
-class declaration and the class constructors and destructor.
+`include` and `src` subdirectories respectively.  I have gotten you
+started on turning `List` into a template class, but have only
+templatized the class declaration and the class constructors and
+destructor.
 
 Once you copy over all of the files from the `template` subdirectory, your
 project should now build and run the unit tests.  You should check that
@@ -533,7 +536,7 @@ this is true at this point by building and running the tests.  Most all of
 the tests are commented out again, so not much will be tested yet, but you
 should be back to a compilable and runnable state.
 
-If you get the copied tests ant templatized `List` to compile and run
+If you get the copied tests and templatized `List` to compile and run
 the tests, you should make a commit with these changes and push it to
 the `template` branch of your repository.  Take a moment to examine
 the new branch in your repository, and the history of the commits
@@ -564,7 +567,7 @@ template class, templatized on a generic type or class we have called
 `T` here.  The `List` class will be able to hold and manage type `T`
 objects, where `T` can be replaced by actual types in our code.
 
-**NOTICE**: one other important change here.  The type of
+**NOTE**: one other important change here.  The type of
 the `values` array/pointer is now:
 
 ```c++
@@ -749,22 +752,24 @@ building and able to run the tests.  You may loose points for pushing
 a broken build, especially if the last build you submit is not
 properly compiling and running the tests.
 
-In this problem, up to 20 points will be given for having at least 1
+In this problem, up to 50 points will be given for having at least 1
 commit that compiles and runs the tests (and at least some attempt was
 made to work on the first task).  Thereafter 20 points are awarded for
-completing each of the 4 tasks.  However you should note that the
-autograder awards either all point for passing all tests, or no points
-if any test is failing for one of the tasks.  Also note that even if
-you pass all tests, when the instructor evaluates your assignment,
-they may remove points if you don't follow the requirements for
-implementing the code (e.g. must reuse functions here as described,
-need to correctly declare parameters or member functions as `const`
-where needed, must have function documentation correct).  You may also
-loose points for style issues.  The instructor may give back comments
-in pull requests and/or create new issues for you if you have issues
-such as these, so it is good to have work committed early before the
-due date, so that the instructor may give feedback requesting you to
-fix issues with your current submission.
+completing each of the the first 3 tasks, and the final 10 points of
+the assignment will be given if you successfully templatize your code
+and complete Task 4.  However you should note that the autograder
+awards either all point for passing all tests, or no points if any
+test is failing for one of the tasks.  Also note that even if you pass
+all tests, when the instructor evaluates your assignment, they may
+remove points if you don't follow the requirements for implementing
+the code (e.g. must reuse functions here as described, need to
+correctly declare parameters or member functions as `const` where
+needed, must have function documentation correct).  You may also loose
+points for style issues.  The instructor may give back comments in
+pull requests and/or create new issues for you if you have issues such
+as these, so it is good to have work committed early before the due
+date, so that the instructor may give feedback requesting you to fix
+issues with your current submission.
 
 ## Program Style
 

@@ -22,6 +22,13 @@
 #include <iostream>
 using namespace std;
 
+#undef task1_1
+#undef task1_2
+#undef task2_1
+#undef task2_2
+#undef task3_1
+#undef task3_2
+
 /** Test List with default constructor can compile
  */
 TEST_CASE("List<int> test template class compiles", "[task0]")
@@ -173,7 +180,7 @@ TEST_CASE("List<int> test of List user defined type for this assignment", "[task
 
 /** Task 1: implement append() member function operation for List class
  */
-/*
+#ifdef task1_1
 TEST_CASE("List<int>::<append member function tests", "[task1]")
 {
   SECTION("grow an initially empty list")
@@ -315,11 +322,11 @@ TEST_CASE("List<int>::<append member function tests", "[task1]")
     CHECK(l1.str() == "<list> size: 14 allocationSize: 20 [ 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31 ]");
   }
 }
-*/
+#endif
 
 /** Task 1: overload operator>>() operation for append for List class
  */
-/*
+#ifdef task1_2
 TEST_CASE("List<int>::operator>> overloaded operator tests", "[task1]")
 {
   SECTION("grow an initially empty list")
@@ -461,11 +468,11 @@ TEST_CASE("List<int>::operator>> overloaded operator tests", "[task1]")
     CHECK(l1.str() == "<list> size: 14 allocationSize: 20 [ 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31 ]");
   }
 }
-*/
+#endif
 
 /** Task 2: implement prepend() member function operation for List class
  */
-/*
+#ifdef task2_1
 TEST_CASE("List<int>::prepend member function tests", "[task2]")
 {
   SECTION("grow an initially empty list")
@@ -607,11 +614,11 @@ TEST_CASE("List<int>::prepend member function tests", "[task2]")
     CHECK(l1.str() == "<list> size: 14 allocationSize: 20 [ 31, 29, 27, 25, 23, 21, 19, 17, 15, 13, 11, 9, 7, 5 ]");
   }
 }
-*/
+#endif
 
 /** Task 2: overload operator<<() operation for List class prepending
  */
-/*
+#ifdef task2_2
 TEST_CASE("List<int>::operator<< overloaded operator prepend tests", "[task2]")
 {
   SECTION("grow an initially empty list")
@@ -753,12 +760,12 @@ TEST_CASE("List<int>::operator<< overloaded operator prepend tests", "[task2]")
     CHECK(l1.str() == "<list> size: 14 allocationSize: 20 [ 31, 29, 27, 25, 23, 21, 19, 17, 15, 13, 11, 9, 7, 5 ]");
   }
 }
-*/
+#endif
 
 /** Task 3: implement concatenate() member function to concatenate
  *    two lists into a new list.
  */
-/*
+#ifdef task3_1
 TEST_CASE("List<int>::concatenate concatenate member function tests", "[task3]")
 {
   SECTION("concatenation of two empty lists should result in an empty list.")
@@ -895,11 +902,11 @@ TEST_CASE("List<int>::concatenate concatenate member function tests", "[task3]")
     CHECK_FALSE(l3 == l4);
   }
 }
-*/
+#endif
 
 /** Task 3: implement operator+ overloaded concatenate operator
  */
-/*
+#ifdef task3_2
 TEST_CASE("List<int>::operator+ overloaded concatenate operator tests", "[task3]")
 {
   SECTION("concatenation of two empty lists should result in an empty list.")
@@ -1036,4 +1043,4 @@ TEST_CASE("List<int>::operator+ overloaded concatenate operator tests", "[task3]
     CHECK_FALSE(l3 == l4);
   }
 }
-*/
+#endif

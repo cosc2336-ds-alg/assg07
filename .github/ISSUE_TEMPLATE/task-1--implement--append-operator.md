@@ -19,5 +19,7 @@ Appending is a relatively easy operation if there is room in the `values` array 
 
 **Additional Requirements**
 
-- Your `append()` member function must correctly return a reference to `this` item, so that it can be used to chain together appen operations in expressions correctly.
+- Your `append()` member method must return a reference to a list, e.g. a `List&` as its result.
+- Your `append()` member function must correctly return a reference to `this` item, so that it can be used to chain together append operations in expressions correctly.
+- Your overloaded `operator>>()` must have the same signature as the `append()` function.  And your `operator>>()` must be implemented by simply calling and reusing the `append()` method.
 - You are required to correctly manage and update memory allocation to hold the list.  You are required to use the existing `growListIfNeeded()` private member function to do this.

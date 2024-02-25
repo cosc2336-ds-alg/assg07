@@ -20,4 +20,6 @@ If you have difficulty, you should remove all functions from the class declarati
 **Additional Requirements**
 
 - You are required to gather all work for this task in a separate branch named `template`.  This branch should start from your last commit of task 3 that implements all of the operator overloading.
-
+- You are required to correctly set back up the build system of the project so that the `test-int-template.cpp` and `test-string-template.cpp` files are being compiled and the unit tests for int and string templatized lists are being run.
+- You are required to fix/implement templatization for existing methods, like `getSize()` and others first in the `List.[hpp|cpp]` files.
+- And finally, you need to reimplement your tasks 1-3 to add appending, prepending and concatenation, templatizing your code correctly to support these operations.
