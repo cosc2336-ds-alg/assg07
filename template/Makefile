@@ -23,6 +23,6 @@ include include/Makefile.inc
 
 # assignment header file specific dependencies
 ${OBJ_DIR}/List.o: ${INC_DIR}/List.hpp
-${OBJ_DIR}/test-int-template-tests.o: ${INC_DIR}/List.hpp
-${OBJ_DIR}/test-string-template-tests.o: ${INC_DIR}/List.hpp
+${OBJ_DIR}/test-int-template.o: ${INC_DIR}/List.hpp
+${OBJ_DIR}/test-string-template.o: ${INC_DIR}/List.hpp
 ${OBJ_DIR}/${PROJECT_NAME}-sim.o: ${INC_DIR}/List.hpp
